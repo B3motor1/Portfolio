@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Behlool Moiz — Electrical Engineering | Systems, Hardware &amp; Software</title>
+<meta name="description" content="Portfolio of Behlool Moiz, Electrical Engineering student at the University of Houston. Circuit design, embedded systems, AI computer vision, 3D prototyping and technical leadership.">
+<meta name="author" content="Behlool Moiz">
+<meta name="theme-color" content="#121417">
+<meta name="color-scheme" content="dark">
+
+<!-- Open Graph / social preview -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Behlool Moiz — Electrical Engineering Portfolio">
+<meta property="og:description" content="Circuit design, embedded software, AI computer vision, and 3D prototyping. University of Houston EE.">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Inline SVG favicon: no extra file, no 404 in the console -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23121417'/%3E%3Crect x='4' y='4' width='92' height='92' rx='19' fill='none' stroke='%2300f0ff' stroke-width='4' stroke-opacity='.65'/%3E%3Ctext x='50' y='70' font-size='56' font-family='monospace' font-weight='bold' fill='%2300f0ff' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap">
+
+<script>
+/* ------------------------------------------------------------------
+   mediaFallback() lives in <head> ON PURPOSE.
+   An image can fail to load BEFORE the bottom-of-body script parses,
+   so a DOMContentLoaded listener would miss it. Every <img> carries an
+   inline onerror="mediaFallback(this)" that is guaranteed to resolve.
+   A second sweep runs on window load to catch anything that slipped by.
+-------------------------------------------------------------------*/
+window.mediaFallback = function (img) {
+  if (!img || img.getAttribute('data-placeholder') === 'true') return;
+  img.onerror = null;                       /* never loop, even if the fallback itself fails */
+  img.setAttribute('data-placeholder', 'true');
+
+  var esc = function (s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  };
+  var label = esc(img.getAttribute('data-label') || 'IMAGE');
+  var path  = esc(img.getAttribute('data-path')  || '');
+
+  var svg =
+    '<svg xmlns="http://www.w3.org/2000/svg" width="480" height="320" viewBox="0 0 480 320">' +
+      '<defs><pattern id="g" width="24" height="24" patternUnits="userSpaceOnUse">' +
+        '<path d="M24 0H0v24" fill="none" stroke="#00f0ff" stroke-opacity=".10" stroke-width="1"/>' +
+      '</pattern></defs>' +
+      '<rect width="480" height="320" fill="#16191d"/>' +
+      '<rect width="480" height="320" fill="url(#g)"/>' +
+      '<rect x="10" y="10" width="460" height="300" rx="10" fill="none" stroke="#00f0ff" ' +
+        'stroke-opacity=".22" stroke-width="2" stroke-dasharray="10 8"/>' +
+      '<text x="240" y="152" fill="#00f0ff" text-anchor="middle" font-size="19" font-weight="700" ' +
+        'letter-spacing="2.5" font-family="ui-monospace,Menlo,Consolas,monospace">' + label + '</text>' +
+      '<text x="240" y="182" fill="#9aa5b1" text-anchor="middle" font-size="12.5" ' +
+        'font-family="ui-monospace,Menlo,Consolas,monospace">' + path + '</text>' +
+      '<text x="240" y="210" fill="#fbbf24" text-anchor="middle" font-size="11.5" opacity=".85" ' +
+        'letter-spacing="1" font-family="ui-monospace,Menlo,Consolas,monospace">DROP FILE HERE</text>' +
+    '</svg>';
+
+  img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+
+  /* A placeholder tile must not open an empty lightbox. */
+  var tile = img.closest ? img.closest('.thumb') : null;
+  if (tile) { tile.classList.add('is-empty'); tile.disabled = true; }
+};
+</script>
+
+<style>
+/* ==================================================================
+   01. TOKENS & RESET
+================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+:root{
+  --bg:#121417;
+  --bg-deep:#0e1013;
+  --surface:#181b1f;
+  --line:#262b31;
+
+  --accent:#00f0ff;
+  --accent-2:#0d9488;
+  --gold:#fbbf24;
+
+  --text:#e8ecf1;
+  --muted:#9aa5b1;
+  --faint:#6b7681;
+
+  --mono:'JetBrains Mono', ui-monospace, SFMono-Regular, 'Cascadia Mono', Menlo, Consolas, 'Courier New', monospace;
+  --sans:'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  --glass:rgba(255,255,255,.035);
+  --glass-brd:rgba(255,255,255,.09);
+  --glass-hi:rgba(0,240,255,.30);
+
+  --nav-h:64px;
+  --maxw:1180px;
+  --navw:1320px;
+  --r:14px;
+  --r-sm:9px;
+  --shadow:0 18px 44px rgba(0,0,0,.48);
+  --sbw:0px;
+}
+
+html{
+  scroll-behavior:smooth;
+  /* Keeps anchor targets clear of the fixed nav — the classic one-line fix. */
+  scroll-padding-top:calc(var(--nav-h) + 22px);
+  -webkit-text-size-adjust:100%;
+}
+
+body{
+  margin:0;
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.65;
+  color:var(--text);
+  background-color:var(--bg);
+  background-image:
+    radial-gradient(900px 520px at 10% -10%, rgba(0,240,255,.10), transparent 62%),
+    radial-gradient(780px 440px at 94% 4%, rgba(251,191,36,.055), transparent 62%);
+  background-attachment:fixed;
+  background-repeat:no-repeat;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Faint engineering-graph paper behind everything */
+body::before{
+  content:'';
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
+  background-size:52px 52px;
+  mask-image:radial-gradient(ellipse 120% 78% at 50% 0%, #000 32%, transparent 88%);
+  -webkit-mask-image:radial-gradient(ellipse 120% 78% at 50% 0%, #000 32%, transparent 88%);
+}
+
+img{ max-width:100%; display:block; }
+a{ color:var(--accent); }
+h1,h2,h3,h4{ margin:0; line-height:1.2; font-weight:700; letter-spacing:-.02em; }
+p{ margin:0; }
+ul{ margin:0; padding:0; }
+
+/* Filtering relies on [hidden]; .card sets display:flex, which would win. */
+[hidden]{ display:none !important; }
+
+:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+  border-radius:4px;
+}
+
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}
+
+.skip{
+  position:absolute; left:14px; top:-60px; z-index:200;
+  background:var(--accent); color:#04181b; font-family:var(--mono); font-weight:700;
+  font-size:.8rem; padding:10px 16px; border-radius:0 0 10px 10px; text-decoration:none;
+  transition:top .18s ease;
+}
+.skip:focus{ top:0; }
+
+.wrap{ width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:22px; }
+main, footer{ position:relative; z-index:1; }
+
+/* ==================================================================
+   02. NAVIGATION
+================================================================== */
+.nav{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  height:var(--nav-h);
+  display:flex; align-items:center;
+  padding-right:var(--sbw);
+  background:rgba(18,20,23,.58);
+  backdrop-filter:blur(14px) saturate(150%);
+  -webkit-backdrop-filter:blur(14px) saturate(150%);
+  border-bottom:1px solid transparent;
+  transition:background .25s ease, border-color .25s ease;
+}
+.nav.scrolled{ background:rgba(13,15,18,.90); border-bottom-color:var(--line); }
+
+.nav__inner{
+  width:100%; max-width:var(--navw); margin-inline:auto;
+  padding-inline:22px;
+  display:flex; align-items:center; gap:16px;
+}
+
+.brand{
+  font-family:var(--mono); font-weight:700; font-size:1rem;
+  color:var(--text); text-decoration:none; white-space:nowrap; letter-spacing:-.4px;
+}
+.brand b{ color:var(--accent); font-weight:700; }
+.brand:hover{ color:#fff; }
+
+.nav__menu{
+  margin-left:auto;
+  display:flex; align-items:center; gap:4px;
+  list-style:none;
+}
+.nav__link{
+  display:block;
+  font-family:var(--mono); font-size:.79rem; font-weight:500;
+  color:var(--muted); text-decoration:none;
+  padding:8px 10px; border-radius:8px; white-space:nowrap;
+  transition:color .18s ease, background-color .18s ease;
+}
+.nav__link:hover{ color:var(--accent); background:rgba(0,240,255,.08); }
+.nav__link.active{ color:var(--accent); background:rgba(0,240,255,.10); }
+
+.nav__side{ display:flex; align-items:center; gap:12px; }
+
+/* Status + resume are duplicated inside the menu for the mobile panel only. */
+.nav__only-mobile{ display:none; }
+
+.status{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--mono); font-size:.7rem; letter-spacing:.4px;
+  color:var(--gold);
+  background:rgba(251,191,36,.09);
+  border:1px solid rgba(251,191,36,.28);
+  border-radius:999px; padding:6px 13px; white-space:nowrap;
+}
+.status__dot{
+  width:8px; height:8px; border-radius:50%; flex:none;
+  background:#2ee06a; box-shadow:0 0 0 0 rgba(46,224,106,.6);
+  animation:pulse 2.4s ease-out infinite;
+}
+@keyframes pulse{
+  0%   { box-shadow:0 0 0 0 rgba(46,224,106,.55); }
+  70%  { box-shadow:0 0 0 7px rgba(46,224,106,0); }
+  100% { box-shadow:0 0 0 0 rgba(46,224,106,0); }
+}
+.status__long{ display:none; }
+@media (min-width:1400px){
+  .status__long{ display:inline; }
+  .status__short{ display:none; }
+}
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  font-family:var(--mono); font-size:.8rem; font-weight:700; letter-spacing:.2px;
+  padding:10px 18px; border-radius:10px;
+  text-decoration:none; cursor:pointer; border:1px solid transparent;
+  transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease, color .18s ease, border-color .18s ease;
+}
+.btn--solid{
+  background:var(--accent); color:#04181b;
+  box-shadow:0 0 0 rgba(0,240,255,0);
+}
+.btn--solid:hover{ transform:translateY(-2px); box-shadow:0 8px 26px rgba(0,240,255,.32); }
+.btn--ghost{
+  background:transparent; color:var(--accent); border-color:rgba(0,240,255,.40);
+}
+.btn--ghost:hover{ background:rgba(0,240,255,.10); border-color:var(--accent); transform:translateY(-2px); }
+.btn--sm{ padding:8px 14px; font-size:.74rem; }
+
+.nav__toggle{
+  display:none;
+  width:42px; height:38px; flex:none;
+  align-items:center; justify-content:center;
+  background:transparent; border:1px solid var(--line); border-radius:9px;
+  cursor:pointer; padding:0;
+}
+.nav__toggle:hover{ border-color:var(--glass-hi); }
+.nav__bars{ position:relative; width:19px; height:2px; background:var(--accent); border-radius:2px; transition:background .18s ease; }
+.nav__bars::before, .nav__bars::after{
+  content:''; position:absolute; left:0; width:19px; height:2px; background:var(--accent); border-radius:2px;
+  transition:transform .22s ease, top .22s ease;
+}
+.nav__bars::before{ top:-6px; }
+.nav__bars::after{ top:6px; }
+.nav__toggle[aria-expanded="true"] .nav__bars{ background:transparent; }
+.nav__toggle[aria-expanded="true"] .nav__bars::before{ top:0; transform:rotate(45deg); }
+.nav__toggle[aria-expanded="true"] .nav__bars::after{ top:0; transform:rotate(-45deg); }
+
+@media (max-width:1099px){
+  .status{ display:none; }
+  .nav__link{ font-size:.75rem; padding:8px 8px; }
+}
+
+@media (max-width:900px){
+  .nav__toggle{ display:inline-flex; }
+  .nav__side{ margin-left:auto; }
+  .nav__side .btn--resume{ display:none; }
+
+  .nav__menu{
+    position:absolute; top:var(--nav-h); left:0; right:0;
+    margin:0; padding:16px;
+    flex-direction:column; align-items:stretch; gap:6px;
+    background:rgba(13,15,18,.98);
+    backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--line);
+    box-shadow:var(--shadow);
+    max-height:calc(100vh - var(--nav-h)); overflow-y:auto;
+    display:none;
+  }
+  .nav__menu[data-open="true"]{ display:flex; animation:dropIn .2s ease both; }
+  .nav__link{ font-size:.92rem; padding:12px 14px; border:1px solid transparent; }
+  .nav__link:hover, .nav__link.active{ border-color:rgba(0,240,255,.22); }
+
+  .nav__only-mobile{ display:block; }
+  .nav__menu .status{
+    display:inline-flex; white-space:normal; margin-top:8px; line-height:1.45; text-align:left;
+  }
+  .nav__menu .btn--resume{ display:inline-flex; margin-top:6px; }
+}
+@keyframes dropIn{ from{ opacity:0; transform:translateY(-8px);} to{ opacity:1; transform:none;} }
+
+/* Scroll lock (mobile menu + lightbox) without layout shift */
+html.locked body{ overflow:hidden; padding-right:var(--sbw); }
+
+/* ==================================================================
+   03. HERO
+================================================================== */
+.hero{ padding:calc(var(--nav-h) + 84px) 0 64px; position:relative; }
+
+.hero__tag{
+  font-family:var(--mono); font-size:.82rem; letter-spacing:2px;
+  color:var(--accent); margin-bottom:20px;
+}
+.hero__tag::after{
+  content:''; display:inline-block; width:9px; height:1.05em;
+  background:var(--accent); margin-left:2px; vertical-align:-2px;
+  animation:blink 1.15s steps(2, start) infinite;
+}
+@keyframes blink{ 50%{ opacity:0; } }
+
+.hero h1{
+  font-size:clamp(2.5rem, 7.4vw, 4.5rem);
+  line-height:1.02;
+  background:linear-gradient(105deg, #ffffff 12%, var(--accent) 96%);
+  -webkit-background-clip:text; background-clip:text;
+  color:transparent;
+  margin-bottom:14px;
+  padding-bottom:.06em;
+}
+.hero__title{
+  font-family:var(--mono); font-size:clamp(.86rem, 2.1vw, 1.02rem);
+  color:var(--gold); letter-spacing:.2px; margin-bottom:20px;
+}
+.hero__bio{
+  max-width:70ch; color:var(--muted); font-size:1.045rem; margin-bottom:30px;
+}
+.hero__cta{ display:flex; flex-wrap:wrap; gap:14px; }
+.hero__cta .btn{ padding:13px 24px; font-size:.86rem; }
+
+/* Metrics strip */
+.metrics{
+  margin-top:52px;
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+  gap:1px;
+  background:var(--glass-brd);
+  border:1px solid var(--glass-brd);
+  border-radius:var(--r);
+  overflow:hidden;
+  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+}
+.metric{
+  background:rgba(20,23,27,.72);
+  padding:22px 20px;
+  transition:background-color .2s ease;
+}
+.metric:hover{ background:rgba(0,240,255,.055); }
+.metric__v{
+  font-family:var(--mono); font-weight:700; font-size:1.42rem;
+  color:var(--accent); line-height:1.15; margin-bottom:6px;
+}
+.metric__l{ font-size:.83rem; color:var(--muted); line-height:1.45; }
+
+/* ==================================================================
+   04. SECTION SHELL
+================================================================== */
+.section{ padding:74px 0; position:relative; }
+.section + .section{ border-top:1px solid rgba(255,255,255,.05); }
+
+.sec-head{ margin-bottom:38px; }
+.sec-label{
+  font-family:var(--mono); font-size:.76rem; letter-spacing:2.4px;
+  color:var(--gold); margin-bottom:10px;
+}
+.sec-title{ font-size:clamp(1.75rem, 4.2vw, 2.4rem); margin-bottom:12px; }
+.sec-sub{ color:var(--muted); max-width:66ch; }
+
+.glass{
+  background:var(--glass);
+  border:1px solid var(--glass-brd);
+  border-radius:var(--r);
+  backdrop-filter:blur(11px); -webkit-backdrop-filter:blur(11px);
+}
+
+/* ==================================================================
+   05. PROJECTS
+================================================================== */
+.filters{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:14px; }
+.filter{
+  font-family:var(--mono); font-size:.76rem; font-weight:500;
+  color:var(--muted); background:rgba(255,255,255,.03);
+  border:1px solid var(--glass-brd); border-radius:999px;
+  padding:9px 17px; cursor:pointer;
+  transition:color .18s ease, border-color .18s ease, background-color .18s ease, transform .18s ease;
+}
+.filter:hover{ color:var(--accent); border-color:rgba(0,240,255,.35); transform:translateY(-1px); }
+.filter[aria-pressed="true"]{
+  color:#04181b; background:var(--accent); border-color:var(--accent); font-weight:700;
+  box-shadow:0 6px 20px rgba(0,240,255,.24);
+}
+.filter-count{
+  font-family:var(--mono); font-size:.73rem; color:var(--faint); margin-bottom:26px;
+}
+
+.projects{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(430px, 1fr)); gap:24px;
+}
+@media (max-width:960px){ .projects{ grid-template-columns:1fr; } }
+
+.card{
+  display:flex; flex-direction:column; gap:16px;
+  padding:24px;
+  background:var(--glass);
+  border:1px solid var(--glass-brd);
+  border-radius:var(--r);
+  backdrop-filter:blur(11px); -webkit-backdrop-filter:blur(11px);
+  transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+.card:hover{ transform:translateY(-4px); border-color:var(--glass-hi); box-shadow:var(--shadow); }
+
+.card__top{ display:flex; align-items:flex-start; justify-content:space-between; gap:14px; flex-wrap:wrap; }
+.card__title{ font-size:1.2rem; letter-spacing:-.01em; }
+.card__date{
+  font-family:var(--mono); font-size:.7rem; color:var(--gold);
+  background:rgba(251,191,36,.10); border:1px solid rgba(251,191,36,.24);
+  border-radius:999px; padding:4px 11px; white-space:nowrap; flex:none;
+}
+
+.stack{ display:flex; flex-wrap:wrap; gap:7px; }
+.chip{
+  font-family:var(--mono); font-size:.68rem; letter-spacing:.2px;
+  color:var(--accent);
+  background:rgba(0,240,255,.075);
+  border:1px solid rgba(0,240,255,.20);
+  border-radius:6px; padding:4px 9px;
+}
+
+.bullets{ list-style:none; display:flex; flex-direction:column; gap:9px; }
+.bullets li{
+  position:relative; padding-left:20px; font-size:.94rem; color:var(--muted); line-height:1.6;
+}
+.bullets li::before{
+  content:'▸'; position:absolute; left:0; top:0; color:var(--accent); font-size:.85rem;
+}
+.bullets b{ color:var(--text); font-weight:600; }
+
+/* Media row */
+.media-row{ display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; }
+@media (max-width:420px){ .media-row{ grid-template-columns:1fr 1fr; } }
+
+.thumb{
+  position:relative; display:block; padding:0; margin:0;
+  background:#16191d; border:1px solid var(--glass-brd); border-radius:var(--r-sm);
+  overflow:hidden; cursor:zoom-in; font:inherit; color:inherit;
+  transition:border-color .18s ease, transform .18s ease;
+}
+.thumb:hover:not(.is-empty){ border-color:var(--accent); transform:translateY(-2px); }
+.thumb img{ width:100%; aspect-ratio:4/3; object-fit:cover; }
+.thumb.is-empty{ cursor:default; opacity:.92; }
+.thumb__cap{
+  display:block;
+  font-family:var(--mono); font-size:.62rem; letter-spacing:.6px;
+  color:var(--faint); text-align:center;
+  padding:6px 4px; border-top:1px solid rgba(255,255,255,.05);
+  background:rgba(0,0,0,.25);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.thumb:hover:not(.is-empty) .thumb__cap{ color:var(--accent); }
+
+/* Video facade (YouTube loads only after a click) */
+.video{
+  position:relative; width:100%; aspect-ratio:16/9;
+  border:1px solid var(--glass-brd); border-radius:var(--r-sm);
+  overflow:hidden; background:#101215;
+}
+.video iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+.video__play{
+  position:absolute; inset:0; width:100%; height:100%;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;
+  background:transparent; border:0; cursor:pointer; padding:0; color:var(--text);
+}
+.video__play img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.55;
+}
+.video__icon{
+  position:relative;
+  width:62px; height:62px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.3rem; padding-left:5px;
+  background:rgba(0,240,255,.14); border:2px solid var(--accent); color:var(--accent);
+  transition:transform .2s ease, background-color .2s ease;
+}
+.video__play:hover .video__icon{ transform:scale(1.09); background:rgba(0,240,255,.26); }
+.video__label{
+  position:relative;
+  font-family:var(--mono); font-size:.74rem; letter-spacing:1.2px; color:var(--text);
+  background:rgba(0,0,0,.55); padding:5px 12px; border-radius:999px;
+}
+.video__msg{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  text-align:center; padding:26px;
+  font-family:var(--mono); font-size:.78rem; line-height:1.7; color:var(--muted);
+}
+.video__msg code{ color:var(--gold); }
+
+.card__links{ display:flex; flex-wrap:wrap; gap:10px; margin-top:auto; padding-top:4px; }
+.link{
+  font-family:var(--mono); font-size:.74rem; font-weight:500;
+  color:var(--muted); text-decoration:none;
+  border:1px solid var(--glass-brd); border-radius:8px; padding:8px 13px;
+  transition:color .18s ease, border-color .18s ease, background-color .18s ease;
+}
+.link:hover{ color:var(--accent); border-color:rgba(0,240,255,.4); background:rgba(0,240,255,.07); }
+
+/* ==================================================================
+   06. TIMELINE
+================================================================== */
+.timeline{ position:relative; padding-left:36px; }
+.timeline::before{
+  content:''; position:absolute; left:9px; top:10px; bottom:10px; width:2px;
+  background:linear-gradient(180deg, var(--accent), rgba(0,240,255,.18) 72%, transparent);
+}
+.tl-item{ position:relative; margin-bottom:22px; padding:22px 24px; }
+.tl-item:last-child{ margin-bottom:0; }
+.tl-item::before{
+  content:''; position:absolute; left:-30px; top:26px;
+  width:12px; height:12px; border-radius:50%;
+  background:var(--bg-deep); border:2px solid var(--accent);
+  box-shadow:0 0 0 4px rgba(0,240,255,.11);
+}
+.tl-head{ display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 12px; margin-bottom:4px; }
+.tl-role{ font-size:1.1rem; }
+.tl-org{ font-family:var(--mono); font-size:.82rem; color:var(--accent); }
+.tl-date{
+  font-family:var(--mono); font-size:.7rem; color:var(--gold);
+  background:rgba(251,191,36,.10); border:1px solid rgba(251,191,36,.24);
+  border-radius:999px; padding:3px 11px; margin-left:auto; white-space:nowrap;
+}
+.tl-item .bullets{ margin-top:12px; }
+@media (max-width:600px){
+  .timeline{ padding-left:28px; }
+  .tl-item{ padding:20px 18px; }
+  .tl-item::before{ left:-25px; }
+  .tl-date{ margin-left:0; }
+}
+
+/* ==================================================================
+   07. SKILLS
+================================================================== */
+.skills{ display:grid; grid-template-columns:repeat(auto-fit, minmax(265px, 1fr)); gap:20px; }
+.skill{ padding:24px; transition:transform .22s ease, border-color .22s ease; }
+.skill:hover{ transform:translateY(-4px); border-color:var(--glass-hi); }
+.skill__h{
+  display:flex; align-items:center; gap:10px;
+  font-family:var(--mono); font-size:.86rem; font-weight:700; letter-spacing:.4px;
+  color:var(--text); margin-bottom:16px;
+  padding-bottom:14px; border-bottom:1px solid var(--glass-brd);
+}
+.skill__h span{ font-size:1.05rem; }
+.pills{ display:flex; flex-wrap:wrap; gap:8px; }
+.pill{
+  font-family:var(--mono); font-size:.71rem;
+  color:var(--muted); background:rgba(255,255,255,.035);
+  border:1px solid var(--glass-brd); border-radius:7px; padding:5px 10px;
+  transition:color .16s ease, border-color .16s ease;
+}
+.skill:hover .pill{ color:var(--text); border-color:rgba(0,240,255,.22); }
+
+/* ==================================================================
+   08. CONTACT / FOOTER
+================================================================== */
+.contact{
+  padding:84px 0 44px;
+  border-top:1px solid rgba(255,255,255,.06);
+  text-align:center;
+}
+.contact h2{ font-size:clamp(1.9rem, 5vw, 2.7rem); margin-bottom:14px; }
+.contact__sub{ color:var(--muted); max-width:56ch; margin:0 auto 32px; }
+.contact__mail{
+  display:inline-flex; align-items:center; gap:10px;
+  font-family:var(--mono); font-size:clamp(.9rem, 2.6vw, 1.15rem); font-weight:700;
+  color:var(--accent); text-decoration:none;
+  padding:15px 28px; border-radius:12px;
+  border:1px solid rgba(0,240,255,.35); background:rgba(0,240,255,.07);
+  transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+  word-break:break-word;
+}
+.contact__mail:hover{ transform:translateY(-3px); background:rgba(0,240,255,.13); box-shadow:0 12px 34px rgba(0,240,255,.22); }
+.contact__links{ display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin:26px 0 44px; }
+.foot-note{
+  font-family:var(--mono); font-size:.72rem; color:var(--faint);
+  padding-top:26px; border-top:1px solid rgba(255,255,255,.06);
+}
+
+/* ==================================================================
+   09. LIGHTBOX
+================================================================== */
+.lightbox{ position:fixed; inset:0; z-index:200; display:flex; align-items:center; justify-content:center; }
+.lightbox__backdrop{
+  position:absolute; inset:0; background:rgba(6,8,10,.92);
+  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+}
+.lightbox__inner{
+  position:relative; z-index:1;
+  display:flex; align-items:center; gap:10px;
+  max-width:min(1100px, 94vw);
+  animation:zoomIn .2s ease both;
+}
+@keyframes zoomIn{ from{ opacity:0; transform:scale(.97);} to{ opacity:1; transform:none;} }
+.lightbox__img{
+  max-width:100%; max-height:78vh; width:auto;
+  border-radius:var(--r); border:1px solid rgba(0,240,255,.25);
+  box-shadow:0 30px 80px rgba(0,0,0,.7);
+  background:#101215;
+}
+.lightbox__cap{
+  position:absolute; left:0; right:0; bottom:-42px; text-align:center;
+  font-family:var(--mono); font-size:.76rem; color:var(--muted);
+}
+.lb-btn{
+  flex:none;
+  width:44px; height:44px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.5rem; line-height:1;
+  color:var(--accent); background:rgba(255,255,255,.06);
+  border:1px solid var(--glass-brd); cursor:pointer; padding:0;
+  transition:background-color .18s ease, border-color .18s ease;
+}
+.lb-btn:hover{ background:rgba(0,240,255,.16); border-color:var(--accent); }
+.lightbox__close{ position:absolute; top:-56px; right:0; font-size:1.15rem; }
+@media (max-width:640px){
+  .lightbox__inner{ gap:6px; }
+  .lb-btn{ width:38px; height:38px; font-size:1.25rem; }
+  .lightbox__close{ top:-48px; }
+  .lightbox__img{ max-height:66vh; }
+}
+
+/* ==================================================================
+   10. REVEAL ANIMATION
+   Uses `translate` (an independent property) instead of `transform`, so
+   card hover transforms never fight the reveal state.
+================================================================== */
+.reveal{ opacity:0; translate:0 20px; transition:opacity .6s ease, translate .6s ease; }
+.reveal.is-visible{ opacity:1; translate:0 0; }
+.stagger > .reveal:nth-child(2){ transition-delay:.07s; }
+.stagger > .reveal:nth-child(3){ transition-delay:.14s; }
+.stagger > .reveal:nth-child(4){ transition-delay:.21s; }
+.stagger > .reveal:nth-child(5){ transition-delay:.28s; }
+.stagger > .reveal:nth-child(6){ transition-delay:.35s; }
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *, *::before, *::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+  }
+  .reveal{ opacity:1; translate:0 0; }
+  .hero__tag::after{ animation:none; }
+}
+
+@media print{
+  .nav, .filters, .filter-count, .lightbox, .video, .skip{ display:none !important; }
+  body{ background:#fff; color:#000; }
+  .card, .glass, .tl-item{ border-color:#ccc; break-inside:avoid; }
+}
+</style>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ================= NAVIGATION ================= -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="#top" aria-label="Behlool Moiz — home">Behlool_Moiz<b>.sys</b></a>
+
+    <ul class="nav__menu" id="navMenu">
+      <li><a class="nav__link" href="#about">// About</a></li>
+      <li><a class="nav__link" href="#projects">// Projects</a></li>
+      <li><a class="nav__link" href="#experience">// Experience</a></li>
+      <li><a class="nav__link" href="#skills">// Skills</a></li>
+      <li><a class="nav__link" href="#contact">// Contact</a></li>
+
+      <!-- Duplicated inside the panel so mobile users still see status + resume.
+           Hidden on desktop via .nav__only-mobile — the copies in .nav__side are used there. -->
+      <li class="nav__only-mobile">
+        <span class="status">
+          <span class="status__dot" aria-hidden="true"></span>
+          STATUS: Open to Summer/Fall Engineering Opportunities
+        </span>
+      </li>
+      <li class="nav__only-mobile">
+        <a class="btn btn--ghost btn--sm btn--resume" href="resume.pdf" target="_blank" rel="noopener">[ 📄 Resume PDF ]</a>
+      </li>
+    </ul>
+
+    <div class="nav__side">
+      <span class="status" title="Open to Summer/Fall Engineering Opportunities">
+        <span class="status__dot" aria-hidden="true"></span>
+        <span class="status__long">STATUS: Open to Summer/Fall Engineering Opportunities</span>
+        <span class="status__short">OPEN TO OPPORTUNITIES</span>
+      </span>
+      <a class="btn btn--ghost btn--sm btn--resume" href="resume.pdf" target="_blank" rel="noopener">[ 📄 Resume PDF ]</a>
+      <button class="nav__toggle" id="navToggle" type="button"
+              aria-expanded="false" aria-controls="navMenu" aria-label="Open navigation menu">
+        <span class="nav__bars" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<span id="top"></span>
+
+<!-- ================= HERO / ABOUT ================= -->
+<section class="hero" id="about" data-nav-section>
+  <div class="wrap">
+    <p class="hero__tag reveal">SYSTEM_READY &gt; WELCOME_</p>
+    <h1 class="reveal">Behlool Moiz</h1>
+    <p class="hero__title reveal">Electrical Engineering Student | Systems, Hardware &amp; Software Developer</p>
+    <p class="hero__bio reveal">
+      Electrical Engineering student at the University of Houston passionate about solving complex
+      engineering challenges—from custom circuit design and embedded software to AI computer vision,
+      3D prototyping, and technical leadership.
+    </p>
+    <div class="hero__cta reveal">
+      <a class="btn btn--solid" href="#projects">[ ⚡ Explore Projects ]</a>
+      <a class="btn btn--ghost" href="#contact">[ ✉️ Contact Me ]</a>
+    </div>
+
+    <div class="metrics stagger">
+      <div class="metric reveal">
+        <div class="metric__v">3.63 GPA</div>
+        <div class="metric__l">UH Electrical Engineering</div>
+      </div>
+      <div class="metric reveal">
+        <div class="metric__v">15+</div>
+        <div class="metric__l">IEEE Workshops Led</div>
+      </div>
+      <div class="metric reveal">
+        <div class="metric__v">−60%</div>
+        <div class="metric__l">Grading Time — Circuit Analysis II TA</div>
+      </div>
+      <div class="metric reveal">
+        <div class="metric__v">IEEE Regional</div>
+        <div class="metric__l">Circuit Competitor — Colorado</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section class="section" id="projects" data-nav-section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="sec-label">// 01_PROJECTS</p>
+      <h2 class="sec-title">Build Log</h2>
+      <p class="sec-sub">
+        Hardware, firmware and software projects — each one taken from problem statement through
+        schematic, board, code and a physical build.
+      </p>
+    </div>
+
+    <div class="filters reveal" role="group" aria-label="Filter projects by category">
+      <button class="filter" type="button" data-filter="all" aria-pressed="true">[ All ]</button>
+      <button class="filter" type="button" data-filter="hardware" aria-pressed="false">[ Hardware &amp; Circuits ]</button>
+      <button class="filter" type="button" data-filter="software" aria-pressed="false">[ Software &amp; AI ]</button>
+      <button class="filter" type="button" data-filter="systems" aria-pressed="false">[ Systems &amp; Prototyping ]</button>
+    </div>
+    <p class="filter-count" id="filterCount" role="status">Showing 4 of 4 projects</p>
+
+    <div class="projects stagger" id="projectGrid">
+
+      <!-- ---------- AI Parking Space Detection ---------- -->
+      <article class="card reveal" data-category="software">
+        <div class="card__top">
+          <h3 class="card__title">AI Parking Space Detection System</h3>
+          <!-- TODO: confirm real date -->
+          <span class="card__date">2026</span>
+        </div>
+
+        <div class="stack">
+          <span class="chip">Python</span>
+          <span class="chip">YOLOv8</span>
+          <span class="chip">OpenCV</span>
+          <span class="chip">Computer Vision</span>
+        </div>
+
+        <ul class="bullets">
+          <li><b>Challenge:</b> Give drivers live occupancy for a whole lot from a single overhead camera feed, instead of wiring a sensor into every individual space.</li>
+          <li><b>Build:</b> Trained a YOLOv8 detection model on a 10,000-image dataset, then routed inference through an OpenCV pipeline that maps detections onto predefined space regions to resolve occupied vs. free frame by frame.</li>
+          <li><b>Result:</b> Greater than 99% classification accuracy with real-time monitoring of every mapped space from one video stream.</li>
+        </ul>
+
+        <!-- Click-to-load YouTube: the iframe is only injected after a click -->
+        <div class="video" data-video>
+          <button class="video__play" type="button" aria-label="Play the parking detection demo video">
+            <img src="assets/parking-poster.jpg" alt=""
+                 loading="lazy" decoding="async"
+                 data-label="DEMO VIDEO POSTER" data-path="assets/parking-poster.jpg"
+                 onerror="mediaFallback(this)">
+            <span class="video__icon" aria-hidden="true">▶</span>
+            <span class="video__label">PLAY DEMO</span>
+          </button>
+        </div>
+
+        <div class="card__links">
+          <!-- TODO: replace # with the real repo URL -->
+          <a class="link" href="#">[ GitHub Repo ]</a>
+          <!-- TODO: replace # with the real write-up / dataset URL -->
+          <a class="link" href="#">[ Model Notes ]</a>
+        </div>
+      </article>
+
+      <!-- ---------- Micromouse ---------- -->
+      <article class="card reveal" data-category="hardware software">
+        <div class="card__top">
+          <h3 class="card__title">Micromouse Autonomous Robot</h3>
+          <!-- TODO: confirm real date -->
+          <span class="card__date">2025 — 2026</span>
+        </div>
+
+        <div class="stack">
+          <span class="chip">C++</span>
+          <span class="chip">KiCad</span>
+          <span class="chip">EasyEDA</span>
+          <span class="chip">IMU</span>
+          <span class="chip">Embedded</span>
+          <span class="chip">Flood-Fill</span>
+        </div>
+
+        <ul class="bullets">
+          <li><b>Challenge:</b> Solve an unknown maze fully on-board — no off-board compute, no external localization, and light enough to stay quick through tight turns.</li>
+          <li><b>Build:</b> Designed a custom PCB in KiCad and EasyEDA that doubles as the robot's structural body, cutting part count and mass, with IMU-based heading correction for straight-line and turn accuracy.</li>
+          <li><b>Result:</b> C++ firmware runs a flood-fill solver: an exploration pass maps the maze and updates the distance field, then the robot commits to the fastest known route to the center.</li>
+        </ul>
+
+        <div class="media-row">
+          <button class="thumb" type="button" aria-label="Enlarge: PCB body layout in KiCad">
+            <img src="assets/micromouse-1.jpg" alt="Micromouse PCB body layout in KiCad"
+                 loading="lazy" decoding="async"
+                 data-label="PCB LAYOUT" data-path="assets/micromouse-1.jpg"
+                 onerror="mediaFallback(this)">
+            <span class="thumb__cap">PCB Layout</span>
+          </button>
+          <button class="thumb" type="button" aria-label="Enlarge: Micromouse schematic">
+            <img src="assets/micromouse-2.jpg" alt="Micromouse control schematic"
+                 loading="lazy" decoding="async"
+                 data-label="KICAD SCHEMATIC" data-path="assets/micromouse-2.jpg"
+                 onerror="mediaFallback(this)">
+            <span class="thumb__cap">Schematic</span>
+          </button>
+          <button class="thumb" type="button" aria-label="Enlarge: assembled Micromouse robot">
+            <img src="assets/micromouse-3.jpg" alt="Assembled Micromouse robot"
+                 loading="lazy" decoding="async"
+                 data-label="FINAL BUILD" data-path="assets/micromouse-3.jpg"
+                 onerror="mediaFallback(this)">
+            <span class="thumb__cap">Final Build</span>
+          </button>
+        </div>
+
+        <div class="card__links">
+          <!-- TODO: replace # with the real repo URL -->
+          <a class="link" href="#">[ GitHub Repo ]</a>
+          <!-- TODO: replace # with the real schematic PDF -->
+          <a class="link" href="#">[ View Schematics ]</a>
+        </div>
+      </article>
+
+      <!-- ---------- Solar Greenhouse Recorder ---------- -->
+      <article class="card reveal" data-category="hardware systems">
+        <div class="card__top">
+          <h3 class="card__title">Solar Greenhouse Recorder</h3>
+          <!-- TODO: confirm real date -->
+          <span class="card__date">2025</span>
+        </div>
+
+        <div class="stack">
+          <span class="chip">ESP32-CAM</span>
+          <span class="chip">Embedded C++</span>
+          <span class="chip">Python</span>
+          <span class="chip">Solar / Battery</span>
+          <span class="chip">3D Printing</span>
+        </div>
+
+        <ul class="bullets">
+          <li><b>Challenge:</b> Record weeks of plant growth inside a mini greenhouse with no wall power and no daily human intervention.</li>
+          <li><b>Build:</b> A solar panel and battery pack feed an ESP32-CAM that wakes on a timed interval to capture a frame and returns to deep sleep, stretching runtime between charge cycles. Mount and enclosure were prototyped to hold a fixed camera angle shot to shot.</li>
+          <li><b>Result:</b> A Python script compiles the captured stills into timelapse video of the full growth cycle.</li>
+        </ul>
+
+        <div class="media-row">
+          <button class="thumb" type="button" aria-label="Enlarge: greenhouse enclosure CAD">
+            <img src="assets/greenhouse-1.jpg" alt="Greenhouse camera mount CAD model"
+                 loading="lazy" decoding="async"
+                 data-label="CAD SCREENSHOT" data-path="assets/greenhouse-1.jpg"
+                 onerror="mediaFallback(this)">
+            <span class="thumb__cap">Enclosure CAD</span>
+          </button>
+          <button class="thumb" type="button" aria-label="Enlarge: solar and ESP32-CAM wiring">
+            <img src="assets/greenhouse-2.jpg" alt="Solar power and ESP32-CAM wiring"
+                 loading="lazy" decoding="async"
+                 data-label="POWER WIRING" data-path="assets/greenhouse-2.jpg"
+                 onerror="mediaFallback(this)">
+            <span class="thumb__cap">Power Wiring</span>
+          </button>
+          <button class="thumb" type="button" aria-label="Enlarge: greenhouse build in the field">
+            <img src="assets/greenhouse-3.jpg" alt="Solar greenhouse recorder deployed"
+                 loading="lazy" decoding="async"
+                 data-label="FINAL BUILD" data-path="assets/greenhouse-3.jpg"
+                 onerror="mediaFallback(this)">
+            <span class="thumb__cap">Final Build</span>
+          </button>
+        </div>
+
+        <div class="card__links">
+          <!-- TODO: replace # with the real repo URL -->
+          <a class="link" href="#">[ GitHub Repo ]</a>
+          <!-- TODO: replace # with a link to a rendered timelapse -->
+          <a class="link" href="#">[ Timelapse ]</a>
+        </div>
+      </article>
+
+      <!-- ---------- Mini-F1 Car & DIY Power Bank ---------- -->
+      <article class="card reveal" data-category="hardware systems">
+        <div class="card__top">
+          <h3 class="card__title">Mini-F1 Car &amp; DIY Power Bank</h3>
+          <!-- TODO: confirm real date -->
+          <span class="card__date">2025</span>
+        </div>
+
+        <div class="stack">
+          <span class="chip">KiCad</span>
+          <span class="chip">SolidWorks</span>
+          <span class="chip">3D Printing</span>
+          <span class="chip">Li-ion / BMS</span>
+          <span class="chip">Soldering</span>
+        </div>
+
+        <ul class="bullets">
+          <li><b>Challenge:</b> Two side builds on the same idea — design the board and the power path yourself instead of assembling a kit.</li>
+          <li><b>Build:</b> A remote-controlled mini F1 car on a custom KiCad PCB, with a chassis and body modeled in CAD and 3D printed to fit the board and drivetrain.</li>
+          <li><b>Result:</b> A companion power bank assembled from salvaged lithium cells paired with a battery-management module for safe charge and discharge protection.</li>
+        </ul>
+
+        <div class="media-row">
+          <button class="thumb" type="button" aria-label="Enlarge: F1 car chassis CAD">
+            <img src="assets/f1car-1.jpg" alt="Mini F1 car chassis CAD model"
+                 loading="lazy" decoding="async"
+                 data-label="CHASSIS CAD" data-path="assets/f1car-1.jpg"
+                 onerror="mediaFallback(this)">
+            <span class="thumb__cap">Chassis CAD</span>
+          </button>
+          <button class="thumb" type="button" aria-label="Enlarge: custom KiCad PCB">
+            <img src="assets/f1car-2.jpg" alt="Custom KiCad PCB for the mini F1 car"
+                 loading="lazy" decoding="async"
+                 data-label="KICAD PCB" data-path="assets/f1car-2.jpg"
+                 onerror="mediaFallback(this)">
+            <span class="thumb__cap">Custom PCB</span>
+          </button>
+          <button class="thumb" type="button" aria-label="Enlarge: DIY power bank build">
+            <img src="assets/f1car-3.jpg" alt="DIY power bank built from salvaged cells"
+                 loading="lazy" decoding="async"
+                 data-label="POWER BANK" data-path="assets/f1car-3.jpg"
+                 onerror="mediaFallback(this)">
+            <span class="thumb__cap">Power Bank</span>
+          </button>
+        </div>
+
+        <div class="card__links">
+          <!-- TODO: replace # with the real repo URL -->
+          <a class="link" href="#">[ GitHub Repo ]</a>
+          <!-- TODO: replace # with the real schematic PDF -->
+          <a class="link" href="#">[ View Schematics ]</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section class="section" id="experience" data-nav-section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="sec-label">// 02_EXPERIENCE</p>
+      <h2 class="sec-title">Experience &amp; Leadership</h2>
+      <p class="sec-sub">Research, teaching, and running hands-on engineering workshops at scale.</p>
+    </div>
+
+    <div class="timeline stagger">
+
+      <article class="tl-item glass reveal">
+        <div class="tl-head">
+          <h3 class="tl-role">Bioelectronics Research Assistant</h3>
+          <span class="tl-date">May 2026 — Present</span>
+        </div>
+        <p class="tl-org">Bioelectronics Synergy Lab</p>
+        <ul class="bullets">
+          <li>Researching electric field cell migration methods.</li>
+          <li>Prototyping custom PCBs and bioelectronic devices using soft plastics and hydrogels — GelMA, PDMS, and PEDOT:PSS.</li>
+        </ul>
+      </article>
+
+      <article class="tl-item glass reveal">
+        <div class="tl-head">
+          <h3 class="tl-role">Teaching Assistant — Circuit Analysis II</h3>
+          <span class="tl-date">June 2026 — Present</span>
+        </div>
+        <p class="tl-org">UH Cullen College of Engineering</p>
+        <ul class="bullets">
+          <li>Developed a Python AI automation script that reduced submission grading time by 60%.</li>
+          <li>Improved section performance to high-70s averages through targeted review sessions.</li>
+        </ul>
+      </article>
+
+      <article class="tl-item glass reveal">
+        <div class="tl-head">
+          <h3 class="tl-role">Project &amp; Workshop Chair</h3>
+          <span class="tl-date">Oct 2025 — May 2026</span>
+        </div>
+        <p class="tl-org">IEEE UH Student Branch</p>
+        <ul class="bullets">
+          <li>Organized 15+ hands-on breadboarding, soldering, and KiCad workshops for 30–40+ attendees per session.</li>
+          <li>Represented the University of Houston at the IEEE Regional Circuit Competition in Colorado.</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section class="section" id="skills" data-nav-section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="sec-label">// 03_SKILLS</p>
+      <h2 class="sec-title">Skills Matrix</h2>
+      <p class="sec-sub">Bench tools, board design, firmware, and the software that ties it together.</p>
+    </div>
+
+    <div class="skills stagger">
+
+      <div class="skill glass reveal">
+        <h3 class="skill__h"><span aria-hidden="true">⚡</span> EDA &amp; Circuits</h3>
+        <div class="pills">
+          <span class="pill">KiCad</span>
+          <span class="pill">EasyEDA</span>
+          <span class="pill">PCB Layout</span>
+          <span class="pill">Circuit Analysis</span>
+          <span class="pill">Multimeters</span>
+          <span class="pill">Oscilloscopes</span>
+          <span class="pill">Soldering</span>
+          <span class="pill">Breadboarding</span>
+        </div>
+      </div>
+
+      <div class="skill glass reveal">
+        <h3 class="skill__h"><span aria-hidden="true">💻</span> Programming &amp; Software</h3>
+        <div class="pills">
+          <span class="pill">C</span>
+          <span class="pill">C++</span>
+          <span class="pill">Python</span>
+          <span class="pill">Embedded C++</span>
+          <span class="pill">MATLAB</span>
+          <span class="pill">OpenCV</span>
+          <span class="pill">YOLOv8</span>
+          <span class="pill">Automation Scripts</span>
+          <span class="pill">Git / GitHub</span>
+        </div>
+      </div>
+
+      <div class="skill glass reveal">
+        <h3 class="skill__h"><span aria-hidden="true">🧩</span> CAD &amp; Prototyping</h3>
+        <div class="pills">
+          <span class="pill">SolidWorks</span>
+          <span class="pill">AutoCAD</span>
+          <span class="pill">3D Printing / Slicing</span>
+          <span class="pill">Enclosure Prototyping</span>
+        </div>
+      </div>
+
+      <div class="skill glass reveal">
+        <h3 class="skill__h"><span aria-hidden="true">📊</span> Tools &amp; Data</h3>
+        <div class="pills">
+          <span class="pill">Power BI</span>
+          <span class="pill">Microsoft Excel (HPE DSI Badges)</span>
+          <span class="pill">Canvas LMS</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ================= CONTACT / FOOTER ================= -->
+<footer class="contact" id="contact" data-nav-section>
+  <div class="wrap">
+    <p class="sec-label reveal">// 04_CONTACT</p>
+    <h2 class="reveal">Let's Build Something Together</h2>
+    <p class="contact__sub reveal">
+      Open to Summer/Fall engineering internships, co-ops, and technical collaborations.
+    </p>
+
+    <a class="contact__mail reveal" href="mailto:bmoiz@cougarnet.uh.edu">
+      <span aria-hidden="true">✉️</span> bmoiz@cougarnet.uh.edu
+    </a>
+
+    <div class="contact__links reveal">
+      <a class="btn btn--ghost" href="https://www.linkedin.com/in/behlool-moiz" target="_blank" rel="noopener">[ LinkedIn ]</a>
+      <a class="btn btn--ghost" href="https://github.com/B3motor1" target="_blank" rel="noopener">[ GitHub ]</a>
+      <a class="btn btn--ghost" href="resume.pdf" target="_blank" rel="noopener">[ 📄 Resume PDF ]</a>
+    </div>
+
+    <p class="foot-note">// Designed for Behlool Moiz. Hosted on GitHub Pages. &copy; <span id="year">2026</span></p>
+  </div>
+</footer>
+
+<!-- ================= LIGHTBOX ================= -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+  <div class="lightbox__backdrop" data-close></div>
+  <div class="lightbox__inner">
+    <button class="lb-btn lightbox__close" id="lbClose" type="button" data-close aria-label="Close viewer (Escape)">✕</button>
+    <button class="lb-btn" id="lbPrev" type="button" aria-label="Previous image">‹</button>
+    <img class="lightbox__img" id="lbImg" alt="">
+    <button class="lb-btn" id="lbNext" type="button" aria-label="Next image">›</button>
+    <p class="lightbox__cap" id="lbCap"></p>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ==============================================================
+     CONFIG — EDIT ME
+     Paste the 11-character YouTube video ID here (from the URL:
+     https://www.youtube.com/watch?v=XXXXXXXXXXX  ->  'XXXXXXXXXXX').
+     Leave it as-is and the player shows a friendly reminder instead
+     of a broken embed.
+  ============================================================== */
+  var YOUTUBE_VIDEO_ID = 'REPLACE_WITH_YOUTUBE_ID';
+
+  var $  = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* --------------------------------------------------------------
+     1. Late-image sweep — catches anything that errored before the
+        inline onerror handler could be attached by the parser.
+  -------------------------------------------------------------- */
+  function sweepImages() {
+    $$('img[data-label]').forEach(function (img) {
+      if (img.getAttribute('data-placeholder') === 'true') return;
+      if (img.complete && img.naturalWidth === 0) window.mediaFallback(img);
+    });
+  }
+  sweepImages();
+  window.addEventListener('load', sweepImages);
+
+  /* --------------------------------------------------------------
+     2. Scroll lock (shared by the mobile menu and the lightbox)
+  -------------------------------------------------------------- */
+  var lockCount = 0;
+  function lockScroll() {
+    if (lockCount++ > 0) return;
+    var sbw = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.setProperty('--sbw', (sbw > 0 ? sbw : 0) + 'px');
+    document.documentElement.classList.add('locked');
+  }
+  function unlockScroll() {
+    if (lockCount === 0) return;
+    if (--lockCount > 0) return;
+    document.documentElement.classList.remove('locked');
+    document.documentElement.style.setProperty('--sbw', '0px');
+  }
+
+  /* --------------------------------------------------------------
+     3. Nav: scrolled state + mobile menu
+  -------------------------------------------------------------- */
+  var nav = $('#nav');
+  var navMenu = $('#navMenu');
+  var navToggle = $('#navToggle');
+  var menuOpen = false;
+
+  function setMenu(open) {
+    if (open === menuOpen) return;
+    menuOpen = open;
+    navMenu.setAttribute('data-open', open ? 'true' : 'false');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    navToggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+    if (open) { lockScroll(); } else { unlockScroll(); }
+  }
+
+  navToggle.addEventListener('click', function () { setMenu(!menuOpen); });
+
+  navMenu.addEventListener('click', function (e) {
+    if (e.target.closest('a')) setMenu(false);
+  });
+
+  document.addEventListener('click', function (e) {
+    if (menuOpen && !e.target.closest('#navMenu') && !e.target.closest('#navToggle')) setMenu(false);
+  });
+
+  var resizeTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      if (window.innerWidth > 900) setMenu(false);
+    }, 120);
+  });
+
+  /* --------------------------------------------------------------
+     4. Scroll-spy + nav background
+  -------------------------------------------------------------- */
+  var sections = $$('[data-nav-section]');
+  var navLinks = $$('.nav__link');
+  var ticking = false;
+
+  function onScroll() {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+
+    var probe = window.scrollY + nav.offsetHeight + 130;
+    var currentId = sections.length ? sections[0].id : '';
+
+    for (var i = 0; i < sections.length; i++) {
+      var top = sections[i].getBoundingClientRect().top + window.scrollY;
+      if (top <= probe) currentId = sections[i].id;
+    }
+    /* Pin the last section once the page bottom is reached. */
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+      currentId = sections[sections.length - 1].id;
+    }
+
+    navLinks.forEach(function (a) {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + currentId);
+    });
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; window.requestAnimationFrame(onScroll); }
+  }, { passive: true });
+  onScroll();
+
+  /* --------------------------------------------------------------
+     5. Project filtering
+  -------------------------------------------------------------- */
+  var filters = $$('.filter');
+  var cards = $$('#projectGrid .card');
+  var countEl = $('#filterCount');
+
+  function applyFilter(key) {
+    var shown = 0;
+    cards.forEach(function (card) {
+      var cats = (card.getAttribute('data-category') || '').split(/\s+/);
+      var match = key === 'all' || cats.indexOf(key) !== -1;
+      card.hidden = !match;
+      if (match) shown++;
+    });
+    filters.forEach(function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-filter') === key ? 'true' : 'false');
+    });
+    countEl.textContent = 'Showing ' + shown + ' of ' + cards.length + ' projects';
+  }
+
+  filters.forEach(function (btn) {
+    btn.addEventListener('click', function () { applyFilter(btn.getAttribute('data-filter')); });
+  });
+  applyFilter('all');
+
+  /* --------------------------------------------------------------
+     6. Lightbox
+  -------------------------------------------------------------- */
+  var lb      = $('#lightbox');
+  var lbImg   = $('#lbImg');
+  var lbCap   = $('#lbCap');
+  var lbClose = $('#lbClose');
+  var lbPrev  = $('#lbPrev');
+  var lbNext  = $('#lbNext');
+  var group   = [];
+  var index   = 0;
+  var lastTrigger = null;
+
+  function render() {
+    var tile = group[index];
+    if (!tile) return;
+    var img = tile.querySelector('img');
+    var cap = tile.querySelector('.thumb__cap');
+    lbImg.src = img.currentSrc || img.src;
+    lbImg.alt = img.alt || '';
+    lbCap.textContent = (cap ? cap.textContent.trim() : '') +
+      (group.length > 1 ? '  ·  ' + (index + 1) + ' / ' + group.length : '');
+  }
+
+  function openLightbox(tile) {
+    var row = tile.closest('.media-row');
+    group = $$('.thumb:not(.is-empty)', row || document).filter(function (t) { return !t.disabled; });
+    index = group.indexOf(tile);
+    if (index < 0) { group = [tile]; index = 0; }
+
+    lastTrigger = tile;
+    lbPrev.hidden = lbNext.hidden = group.length < 2;
+    render();
+    lb.hidden = false;
+    lockScroll();
+    lbClose.focus();
+  }
+
+  function closeLightbox() {
+    if (lb.hidden) return;
+    lb.hidden = true;
+    lbImg.removeAttribute('src');
+    unlockScroll();
+    if (lastTrigger) { lastTrigger.focus(); lastTrigger = null; }
+  }
+
+  function step(delta) {
+    if (group.length < 2) return;
+    index = (index + delta + group.length) % group.length;
+    render();
+  }
+
+  document.addEventListener('click', function (e) {
+    var tile = e.target.closest('.thumb');
+    if (tile && !tile.disabled && !tile.classList.contains('is-empty')) openLightbox(tile);
+  });
+
+  lbPrev.addEventListener('click', function () { step(-1); });
+  lbNext.addEventListener('click', function () { step(1); });
+  lb.addEventListener('click', function (e) {
+    if (e.target.hasAttribute('data-close')) closeLightbox();
+  });
+
+  /* Focus trap inside the dialog */
+  lb.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab') return;
+    var f = [lbClose, lbPrev, lbNext].filter(function (b) { return !b.hidden; });
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      if (!lb.hidden) { closeLightbox(); return; }
+      if (menuOpen) { setMenu(false); navToggle.focus(); }
+      return;
+    }
+    if (lb.hidden) return;
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); step(-1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+  });
+
+  /* --------------------------------------------------------------
+     7. Click-to-load YouTube facade
+  -------------------------------------------------------------- */
+  $$('[data-video]').forEach(function (box) {
+    var play = $('.video__play', box);
+    if (!play) return;
+    play.addEventListener('click', function () {
+      var id = YOUTUBE_VIDEO_ID.trim();
+      if (!id || id === 'REPLACE_WITH_YOUTUBE_ID') {
+        box.innerHTML =
+          '<p class="video__msg">No demo video linked yet.<br>' +
+          'Set <code>YOUTUBE_VIDEO_ID</code> near the top of the &lt;script&gt; block ' +
+          'to your 11-character YouTube ID.</p>';
+        return;
+      }
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) +
+                   '?autoplay=1&rel=0&modestbranding=1';
+      iframe.title = 'AI Parking Space Detection — demo';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      iframe.setAttribute('loading', 'lazy');
+      box.innerHTML = '';
+      box.appendChild(iframe);
+    });
+  });
+
+  /* --------------------------------------------------------------
+     8. Scroll reveal
+  -------------------------------------------------------------- */
+  var revealables = $$('.reveal');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealables.forEach(function (el) { el.classList.add('is-visible'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);           /* reveal once; filtering uses [hidden] instead */
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    revealables.forEach(function (el) { io.observe(el); });
+  }
+
+  /* --------------------------------------------------------------
+     9. Footer year
+  -------------------------------------------------------------- */
+  $('#year').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
