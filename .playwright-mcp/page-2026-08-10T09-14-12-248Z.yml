@@ -1,0 +1,382 @@
+- generic [active] [ref=f3e1]:
+  - link "Skip to content" [ref=f3e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=f3e3]:
+    - generic [ref=f3e4]:
+      - link "Behlool Moiz — home" [ref=f3e5] [cursor=pointer]:
+        - /url: "#top"
+        - text: Behlool_Moiz.sys
+      - button "Open navigation menu" [ref=f3e7] [cursor=pointer]
+  - main [ref=f3e9]:
+    - generic [ref=f3e11]:
+      - paragraph [ref=f3e12]: SYSTEM_READY > WELCOME_
+      - heading "Behlool Moiz" [level=1] [ref=f3e13]
+      - paragraph [ref=f3e14]: Electrical Engineering Student
+      - paragraph [ref=f3e15]: Rising Junior Electrical Engineering student at the University of Houston, passionate about solving complex engineering challenges, from custom circuit design and embedded software to AI computer vision, 3D prototyping, and technical leadership.
+      - generic [ref=f3e16]:
+        - link "[ ⚡ Explore Projects ]" [ref=f3e17] [cursor=pointer]:
+          - /url: "#projects"
+        - link "[ ✉️ Contact Me ]" [ref=f3e18] [cursor=pointer]:
+          - /url: "#contact"
+      - generic [ref=f3e19]:
+        - generic [ref=f3e20]:
+          - generic [ref=f3e21]: 3.63 GPA
+          - generic [ref=f3e22]: B.S. Electrical Engineering, UH
+        - generic [ref=f3e23]:
+          - generic [ref=f3e24]: Dean's List
+          - generic [ref=f3e25]: Fall 2024 · Spring 2025 · Fall 2025
+        - generic [ref=f3e26]:
+          - generic [ref=f3e27]: Cullen Long
+          - generic [ref=f3e28]: Family Endowment Scholarship
+        - generic [ref=f3e29]:
+          - generic [ref=f3e30]: S. Javaid Anwar
+          - generic [ref=f3e31]: Scholarship Recipient
+    - generic [ref=f3e33]:
+      - generic [ref=f3e34]:
+        - paragraph [ref=f3e35]: // 01_PROJECTS
+        - heading "Project Portfolio" [level=2] [ref=f3e36]
+        - paragraph [ref=f3e37]: Hardware, firmware and software projects I've designed and built — boards, enclosures, embedded code and everything in between.
+      - group "Filter projects by category" [ref=f3e38]:
+        - button "[ All ]" [pressed] [ref=f3e39] [cursor=pointer]
+        - button "[ Hardware & Circuits ]" [ref=f3e40] [cursor=pointer]
+        - button "[ Software & AI ]" [ref=f3e41] [cursor=pointer]
+        - button "[ Systems & Prototyping ]" [ref=f3e42] [cursor=pointer]
+      - status [ref=f3e43]: Showing 7 of 7 projects
+      - generic [ref=f3e44]:
+        - article [ref=f3e45]:
+          - generic [ref=f3e46]:
+            - heading "AI Parking Space Detection System" [level=3] [ref=f3e47]
+            - generic [ref=f3e48]: Feb — Mar 2026
+          - generic [ref=f3e49]:
+            - generic [ref=f3e50]: Python
+            - generic [ref=f3e51]: YOLOv8
+            - generic [ref=f3e52]: OpenCV
+            - generic [ref=f3e53]: Computer Vision
+            - generic [ref=f3e54]: Web Dashboard
+          - generic [ref=f3e55]:
+            - paragraph [ref=f3e56]: PROJECT DESCRIPTION
+            - paragraph [ref=f3e57]: OpenPark is a hackathon project built to eliminate parking headaches by detecting available spots in real time using aerial camera footage. It runs a YOLOv8 computer vision model trained on over 10,000 images to identify empty versus occupied spots with high accuracy. The data feeds into a live web dashboard that displays parking lot layouts, highlighting open spots in green and taken ones in red so drivers can quickly find a place to park.
+          - button "Play the OpenPark demo video" [ref=f3e59] [cursor=pointer]:
+            - generic [ref=f3e60]: ▶
+            - generic [ref=f3e61]: PLAY DEMO
+          - link "[ ▶ Watch on YouTube ]" [ref=f3e63] [cursor=pointer]:
+            - /url: https://www.youtube.com/watch?v=RmpyhGK8YfM
+        - article [ref=f3e64]:
+          - generic [ref=f3e65]:
+            - heading "Micromouse Autonomous Robot" [level=3] [ref=f3e66]
+            - generic [ref=f3e67]: Oct 2025 — Present
+          - generic [ref=f3e68]:
+            - generic [ref=f3e69]: EasyEDA
+            - generic [ref=f3e70]: Custom PCB
+            - generic [ref=f3e71]: ESP32
+            - generic [ref=f3e72]: C++
+            - generic [ref=f3e73]: IR Sensors
+            - generic [ref=f3e74]: Flood-Fill
+          - generic [ref=f3e75]:
+            - paragraph [ref=f3e76]: PROJECT DESCRIPTION
+            - paragraph [ref=f3e77]: Micromouse is an autonomous maze-solving robot that uses IR sensors to detect any walls ahead of it. The goal is to blindly finish a maze as quickly as possible with the best algorithm. Very old IEEE tradition. The way I designed this was to make my main body a PCB, which I designed in EasyEDA. It's a team project with my close friends here at UH.
+          - generic [ref=f3e78]:
+            - generic [ref=f3e79]:
+              - button "Previous image" [ref=f3e80] [cursor=pointer]: ‹
+              - button "Assembled Micromouse robot with wheels and battery" [ref=f3e81]
+              - button "Micromouse PCB render, component side"
+              - button "Micromouse PCB render with custom silkscreen artwork"
+              - button "Micromouse schematic drawn in EasyEDA"
+              - button "Next image" [ref=f3e82] [cursor=pointer]: ›
+              - generic [ref=f3e83]: 1 / 4
+            - generic [ref=f3e84]:
+              - generic [ref=f3e85]: Assembled Robot
+              - generic [ref=f3e86]:
+                - button "Show image 1 of 4" [ref=f3e87] [cursor=pointer]
+                - button "Show image 2 of 4" [ref=f3e88] [cursor=pointer]
+                - button "Show image 3 of 4" [ref=f3e89] [cursor=pointer]
+                - button "Show image 4 of 4" [ref=f3e90] [cursor=pointer]
+          - link "[ GitHub Repo ]" [ref=f3e92] [cursor=pointer]:
+            - /url: https://github.com/B3motor1/Micromouse-Directional-stability-code/tree/main
+        - article [ref=f3e93]:
+          - generic [ref=f3e94]:
+            - heading "Solar Greenhouse Recorder" [level=3] [ref=f3e95]
+            - generic [ref=f3e96]: Aug — Nov 2025
+          - generic [ref=f3e97]:
+            - generic [ref=f3e98]: ESP32-CAM
+            - generic [ref=f3e99]: Solar Power
+            - generic [ref=f3e100]: 3D Printing
+            - generic [ref=f3e101]: Python
+            - generic [ref=f3e102]: Timelapse
+          - generic [ref=f3e103]:
+            - paragraph [ref=f3e104]: PROJECT DESCRIPTION
+            - paragraph [ref=f3e105]: A greenhouse powered by a 5V solar panel that uses an ESP32 to capture images every 60 seconds to make a timelapse of a seed sprouting.
+          - generic [ref=f3e106]:
+            - generic [ref=f3e107]:
+              - button "Previous image" [ref=f3e108] [cursor=pointer]: ‹
+              - button "Assembled solar greenhouse with panel on top and a seedling inside" [ref=f3e109]
+              - button "Exploded CAD view of the 3D-printed greenhouse parts"
+              - button "ESP32-CAM and wiring inside the printed electronics bay"
+              - button "Next image" [ref=f3e110] [cursor=pointer]: ›
+              - generic [ref=f3e111]: 1 / 3
+            - generic [ref=f3e112]:
+              - generic [ref=f3e113]: Assembled Greenhouse
+              - generic [ref=f3e114]:
+                - button "Show image 1 of 3" [ref=f3e115] [cursor=pointer]
+                - button "Show image 2 of 3" [ref=f3e116] [cursor=pointer]
+                - button "Show image 3 of 3" [ref=f3e117] [cursor=pointer]
+          - link "[ GitHub Repo ]" [ref=f3e119] [cursor=pointer]:
+            - /url: https://github.com/B3motor1/Solar-Greenhouse-recorder
+        - article [ref=f3e120]:
+          - generic [ref=f3e121]:
+            - heading "Mini F1 Car" [level=3] [ref=f3e122]
+            - generic [ref=f3e123]: April 2025
+          - generic [ref=f3e124]:
+            - generic [ref=f3e125]: KiCad
+            - generic [ref=f3e126]: Custom PCB
+            - generic [ref=f3e127]: ESP32
+            - generic [ref=f3e128]: 3D Printing
+            - generic [ref=f3e129]: SHPE
+          - generic [ref=f3e130]:
+            - paragraph [ref=f3e131]: PROJECT DESCRIPTION
+            - paragraph [ref=f3e132]: A mini F1 car powered by an ESP32 module. Its chassis and wheels are made by 3D printing, while the PCB is designed in KiCad.
+          - generic [ref=f3e133]:
+            - generic [ref=f3e134]:
+              - button "Previous image" [ref=f3e135] [cursor=pointer]: ‹
+              - button "The finished mini F1 car held next to the SHPE MiniF1 Project trophy" [ref=f3e136]
+              - button "KiCad schematic for the mini F1 car control board"
+              - button "Next image" [ref=f3e137] [cursor=pointer]: ›
+              - generic [ref=f3e138]: 1 / 2
+            - generic [ref=f3e139]:
+              - generic [ref=f3e140]: Finished Car & SHPE Trophy
+              - generic [ref=f3e141]:
+                - button "Show image 1 of 2" [ref=f3e142] [cursor=pointer]
+                - button "Show image 2 of 2" [ref=f3e143] [cursor=pointer]
+        - article [ref=f3e144]:
+          - generic [ref=f3e145]:
+            - heading "DIY Lithium-Ion Power Bank" [level=3] [ref=f3e146]
+            - generic [ref=f3e147]: April 2025
+          - generic [ref=f3e148]:
+            - generic [ref=f3e149]: Li-ion Cells
+            - generic [ref=f3e150]: 134N3P BMS
+            - generic [ref=f3e151]: Boost Converter
+            - generic [ref=f3e152]: Salvage
+            - generic [ref=f3e153]: 3D Printing
+          - generic [ref=f3e154]:
+            - paragraph [ref=f3e155]: PROJECT DESCRIPTION
+            - paragraph [ref=f3e156]: I found a few dead vapes on campus and broke them apart to extract their single-cell lithium batteries, wiring three in parallel for more capacity. To charge my phone, I wired the pack to a $2 134N3P Micro USB board, which handles both battery management and boosting the output from 3.7V to 5V.
+          - generic [ref=f3e157]:
+            - generic [ref=f3e158]:
+              - button "Previous image" [ref=f3e159] [cursor=pointer]: ‹
+              - 'button "Finished power bank: three lithium cells and a USB board in a printed case" [ref=f3e160]'
+              - button "Bag of discarded vapes collected on campus for cell salvage"
+              - button "CAD model of the power bank enclosure in the slicer"
+              - button "Next image" [ref=f3e161] [cursor=pointer]: ›
+              - generic [ref=f3e162]: 1 / 3
+            - generic [ref=f3e163]:
+              - generic [ref=f3e164]: Finished Power Bank
+              - generic [ref=f3e165]:
+                - button "Show image 1 of 3" [ref=f3e166] [cursor=pointer]
+                - button "Show image 2 of 3" [ref=f3e167] [cursor=pointer]
+                - button "Show image 3 of 3" [ref=f3e168] [cursor=pointer]
+        - article [ref=f3e169]:
+          - generic [ref=f3e170]:
+            - heading "ESP32-CAM CCTV Workshop" [level=3] [ref=f3e171]
+            - generic [ref=f3e172]: April 2026
+          - generic [ref=f3e173]:
+            - generic [ref=f3e174]: ESP32-CAM
+            - generic [ref=f3e175]: Arduino
+            - generic [ref=f3e176]: Pan/Tilt Servos
+            - generic [ref=f3e177]: Wi-Fi Streaming
+            - generic [ref=f3e178]: 3D Printing
+            - generic [ref=f3e179]: Teaching
+          - generic [ref=f3e180]:
+            - paragraph [ref=f3e181]: PROJECT DESCRIPTION
+            - paragraph [ref=f3e182]: When I was a Project Chair for IEEE@UH, I hosted a beginner workshop on building a cheap, web-controlled CCTV camera using an ESP32-CAM and a pair of servos for pan/tilt control. It's a fun intro to hardware and IoT that covers wiring, 3D printing custom mounts, and controlling a live stream over Wi-Fi. I put together a GitHub repo with the Arduino code, STL files, and step-by-step tutorial slides so anyone can follow along and build one.
+          - generic [ref=f3e183]:
+            - generic [ref=f3e184]:
+              - button "Previous image" [ref=f3e185] [cursor=pointer]: ‹
+              - button "Assembled ESP32-CAM on a 3D-printed pan and tilt mount fixed to a wall" [ref=f3e186]
+              - 'button "Wiring diagram: ESP32-CAM to pan and tilt servos on GPIO 14 and 15"'
+              - button "Two SG90 servos wired to the 3D-printed pan and tilt bracket"
+              - button "Next image" [ref=f3e187] [cursor=pointer]: ›
+              - generic [ref=f3e188]: 1 / 3
+            - generic [ref=f3e189]:
+              - generic [ref=f3e190]: Assembled Pan/Tilt Camera
+              - generic [ref=f3e191]:
+                - button "Show image 1 of 3" [ref=f3e192] [cursor=pointer]
+                - button "Show image 2 of 3" [ref=f3e193] [cursor=pointer]
+                - button "Show image 3 of 3" [ref=f3e194] [cursor=pointer]
+          - link "[ GitHub Repo ]" [ref=f3e196] [cursor=pointer]:
+            - /url: https://github.com/B3motor1/10-ESP32-CAM-Workshop
+        - article [ref=f3e197]:
+          - generic [ref=f3e198]:
+            - heading "Multi-Range Digital Ohmmeter" [level=3] [ref=f3e199]
+            - generic [ref=f3e200]: April 2026
+          - generic [ref=f3e201]:
+            - generic [ref=f3e202]: Arduino
+            - generic [ref=f3e203]: CD4051 Multiplexer
+            - generic [ref=f3e204]: TFT Display
+            - generic [ref=f3e205]: KiCad
+            - generic [ref=f3e206]: C++
+          - generic [ref=f3e207]:
+            - paragraph [ref=f3e208]: PROJECT DESCRIPTION
+            - paragraph [ref=f3e209]: I built a multi-range ohmmeter that uses multiplexers to switch between reference resistors using pushbutton inputs. Controlled by an Arduino, you can manually choose the reference resistance range and view real-time measurements on an LCD display.
+          - generic [ref=f3e210]:
+            - generic [ref=f3e211]:
+              - button "Previous image" [ref=f3e212] [cursor=pointer]: ‹
+              - button "Breadboard ohmmeter with Arduino Uno and TFT display showing a resistance reading" [ref=f3e213]
+              - button "KiCad schematic for the multi-range ohmmeter"
+              - button "Next image" [ref=f3e214] [cursor=pointer]: ›
+              - generic [ref=f3e215]: 1 / 2
+            - generic [ref=f3e216]:
+              - generic [ref=f3e217]: Breadboard Prototype
+              - generic [ref=f3e218]:
+                - button "Show image 1 of 2" [ref=f3e219] [cursor=pointer]
+                - button "Show image 2 of 2" [ref=f3e220] [cursor=pointer]
+    - generic [ref=f3e222]:
+      - generic [ref=f3e223]:
+        - paragraph [ref=f3e224]: // 02_EXPERIENCE
+        - heading "Experience & Leadership" [level=2] [ref=f3e225]
+        - paragraph [ref=f3e226]: Research, teaching, and running hands-on electronics workshops at UH.
+      - generic [ref=f3e227]:
+        - article [ref=f3e228]:
+          - img "Bioelectronic Synergy Lab logo" [ref=f3e230]
+          - generic [ref=f3e231]:
+            - generic [ref=f3e232]:
+              - heading "Bioelectronics Research Assistant" [level=3] [ref=f3e233]
+              - generic [ref=f3e234]: May 2026 — Present
+            - paragraph [ref=f3e235]: Bioelectronic Synergy Lab, University of Houston
+            - list [ref=f3e236]:
+              - listitem [ref=f3e237]: ▸ Conduct literature reviews and COMSOL simulations on cell migration methods, analyzing how localized electric fields can be used to safely direct cells towards target zones.
+              - listitem [ref=f3e238]: ▸ Design custom PCBs and prototype device components using soft plastics like PDMS, GelMA hydrogels and conductive polymers (PEDOT:PSS).
+              - listitem [ref=f3e239]: ▸ Collaborate in weekly lab meetings with the research team to present project updates and integrate electrical hardware with biological systems.
+        - article [ref=f3e240]:
+          - img "University of Houston ECE logo" [ref=f3e242]
+          - generic [ref=f3e243]:
+            - generic [ref=f3e244]:
+              - heading "Circuit Analysis II Teaching Assistant" [level=3] [ref=f3e245]
+              - generic [ref=f3e246]: June 2026 — Present
+            - paragraph [ref=f3e247]: Cullen College of Engineering, University of Houston
+            - list [ref=f3e248]:
+              - listitem [ref=f3e249]: ▸ Reduced grading time by 60% by developing a Python script that automated submission grading and custom feedback via an AI model API.
+              - listitem [ref=f3e250]: ▸ Designed original homeworks and quizzes and conducted weekly office hours to troubleshoot complex AC network analysis, transfer functions, and transient responses.
+              - listitem [ref=f3e251]: ▸ Increased section performance from a 60% historical average to a high 70% average as a direct result of weekly review sessions, effective grading, and feedback.
+        - article [ref=f3e252]:
+          - img "UH Cullen College First Year Experience logo" [ref=f3e254]
+          - generic [ref=f3e255]:
+            - generic [ref=f3e256]:
+              - heading "Intro to Engineering Teaching Assistant" [level=3] [ref=f3e257]
+              - generic [ref=f3e258]: August 2026 — Present
+            - paragraph [ref=f3e259]: First Year Experience, Cullen College of Engineering
+            - list [ref=f3e260]:
+              - listitem [ref=f3e261]: ▸ Guide first-year students through hands-on design labs covering breadboarding, basic measurement with multimeters, and the engineering design process.
+              - listitem [ref=f3e262]: ▸ Run weekly lab sections and office hours, walking students through MATLAB fundamentals and technical documentation standards.
+              - listitem [ref=f3e263]: ▸ Grade design reports and lab deliverables, giving written feedback focused on engineering reasoning rather than final answers.
+        - article [ref=f3e264]:
+          - img "IEEE UH Student Branch logo" [ref=f3e266]
+          - generic [ref=f3e267]:
+            - generic [ref=f3e268]:
+              - heading "Project & Workshop Chair" [level=3] [ref=f3e269]
+              - generic [ref=f3e270]: Oct 2025 — May 2026
+            - paragraph [ref=f3e271]: IEEE @ UH Student Branch
+            - list [ref=f3e272]:
+              - listitem [ref=f3e273]: ▸ Led and organized hands-on electronics workshops (breadboarding, soldering, PCB design using EasyEDA) with 30–40+ attendees per session.
+              - listitem [ref=f3e274]: ▸ Coordinated end-to-end workshop logistics, managing materials, schedules, and officer roles to support 15+ events per semester.
+              - listitem [ref=f3e275]: ▸ Represented the university at an IEEE regional conference, traveling to compete against other universities in technical student circuit design competitions.
+    - generic [ref=f3e277]:
+      - generic [ref=f3e278]:
+        - paragraph [ref=f3e279]: // 03_SKILLS
+        - heading "Skills Matrix" [level=2] [ref=f3e280]
+        - paragraph [ref=f3e281]: Bench tools, board design, firmware, and the software that ties it together.
+      - generic [ref=f3e282]:
+        - generic [ref=f3e283]:
+          - heading "EDA & Circuits" [level=3] [ref=f3e284]:
+            - generic [ref=f3e285]: ⚡
+            - text: EDA & Circuits
+          - generic [ref=f3e286]:
+            - generic [ref=f3e287]: KiCad
+            - generic [ref=f3e288]: EasyEDA
+            - generic [ref=f3e289]: PCB Layout
+            - generic [ref=f3e290]: Schematic Capture
+            - generic [ref=f3e291]: Circuit Analysis
+            - generic [ref=f3e292]: Soldering
+            - generic [ref=f3e293]: Breadboarding
+            - generic [ref=f3e294]: Oscilloscopes
+            - generic [ref=f3e295]: Multimeters
+        - generic [ref=f3e296]:
+          - heading "Programming & Embedded" [level=3] [ref=f3e297]:
+            - generic [ref=f3e298]: 💻
+            - text: Programming & Embedded
+          - generic [ref=f3e299]:
+            - generic [ref=f3e300]: C
+            - generic [ref=f3e301]: C++
+            - generic [ref=f3e302]: Python
+            - generic [ref=f3e303]: Embedded C++
+            - generic [ref=f3e304]: ESP32 / ESP32-CAM
+            - generic [ref=f3e305]: Arduino
+            - generic [ref=f3e306]: PWM Motor Control
+            - generic [ref=f3e307]: MATLAB
+            - generic [ref=f3e308]: Git / GitHub
+        - generic [ref=f3e309]:
+          - heading "AI, Vision & Software" [level=3] [ref=f3e310]:
+            - generic [ref=f3e311]: 🤖
+            - text: AI, Vision & Software
+          - generic [ref=f3e312]:
+            - generic [ref=f3e313]: YOLOv8
+            - generic [ref=f3e314]: OpenCV
+            - generic [ref=f3e315]: Computer Vision
+            - generic [ref=f3e316]: Dataset Training
+            - generic [ref=f3e317]: Web Dashboards
+            - generic [ref=f3e318]: Automation Scripts
+            - generic [ref=f3e319]: Flood-Fill Algorithms
+        - generic [ref=f3e320]:
+          - heading "CAD & Prototyping" [level=3] [ref=f3e321]:
+            - generic [ref=f3e322]: 🧩
+            - text: CAD & Prototyping
+          - generic [ref=f3e323]:
+            - generic [ref=f3e324]: SolidWorks
+            - generic [ref=f3e325]: AutoCAD
+            - generic [ref=f3e326]: 3D Printing / Slicing
+            - generic [ref=f3e327]: STL Design
+            - generic [ref=f3e328]: Enclosure Prototyping
+        - generic [ref=f3e329]:
+          - heading "Power & Sensors" [level=3] [ref=f3e330]:
+            - generic [ref=f3e331]: 🔋
+            - text: Power & Sensors
+          - generic [ref=f3e332]:
+            - generic [ref=f3e333]: Li-ion Cells
+            - generic [ref=f3e334]: Battery Management (BMS)
+            - generic [ref=f3e335]: Boost Converters
+            - generic [ref=f3e336]: Solar Power
+            - generic [ref=f3e337]: IR Sensors
+            - generic [ref=f3e338]: IMU
+            - generic [ref=f3e339]: Multiplexers
+            - generic [ref=f3e340]: TFT / LCD Displays
+        - generic [ref=f3e341]:
+          - heading "Simulation, Tools & Data" [level=3] [ref=f3e342]:
+            - generic [ref=f3e343]: 📊
+            - text: Simulation, Tools & Data
+          - generic [ref=f3e344]:
+            - generic [ref=f3e345]: COMSOL Multiphysics
+            - generic [ref=f3e346]: Power BI
+            - generic [ref=f3e347]: Microsoft Excel (HPE DSI Badges)
+            - generic [ref=f3e348]: Canvas LMS
+  - contentinfo [ref=f3e349]:
+    - generic [ref=f3e350]:
+      - paragraph [ref=f3e351]: // 04_CONTACT
+      - img "Behlool Moiz" [ref=f3e352]
+      - heading "Let's Connect" [level=2] [ref=f3e353]
+      - paragraph [ref=f3e354]: Open to Summer/Fall engineering internships, co-ops, and technical collaborations.
+      - generic [ref=f3e355]:
+        - link "bmoiz@cougarnet.uh.edu" [ref=f3e356] [cursor=pointer]:
+          - /url: mailto:bmoiz@cougarnet.uh.edu
+          - generic [ref=f3e357]: ✉️
+          - text: bmoiz@cougarnet.uh.edu
+        - link "behloolmoiz@gmail.com" [ref=f3e358] [cursor=pointer]:
+          - /url: mailto:behloolmoiz@gmail.com
+          - generic [ref=f3e359]: ✉️
+          - text: behloolmoiz@gmail.com
+      - generic [ref=f3e360]:
+        - link "[ LinkedIn ]" [ref=f3e361] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/behlool-moiz
+        - link "[ GitHub ]" [ref=f3e362] [cursor=pointer]:
+          - /url: https://github.com/B3motor1
+        - link "[ 📄 Resume PDF ]" [ref=f3e363] [cursor=pointer]:
+          - /url: resume.pdf
+      - paragraph [ref=f3e364]: // Designed for Behlool Moiz. Hosted on GitHub Pages. © 2026
