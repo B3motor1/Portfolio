@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Behlool Moiz — Electrical Engineering Student</title>
+<title>Behlool Moiz | Electrical Engineering Student</title>
 <meta name="description" content="Portfolio of Behlool Moiz, Electrical Engineering student at the University of Houston. Custom PCBs, embedded systems, computer vision and 3D-printed prototypes.">
 <meta name="author" content="Behlool Moiz">
 <meta name="theme-color" content="#F7F6F1">
 <meta name="color-scheme" content="light">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Behlool Moiz — Electrical Engineering Student">
+<meta property="og:title" content="Behlool Moiz | Electrical Engineering Student">
 <meta property="og:description" content="Custom PCBs, embedded systems, computer vision and 3D-printed prototypes. University of Houston.">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -78,14 +78,14 @@ window.mediaFallback = function (img) {
 <style>
 /* ==================================================================
    01. TOKENS & RESET
-   Design direction: "engineer's notebook" — warm engineering paper,
+   Design direction: "engineer's notebook". Warm engineering paper,
    blueprint-blue accent, one pencil-red signal (hero margin line),
    mono reserved for labels, captions and data.
 ================================================================== */
 *, *::before, *::after { box-sizing: border-box; }
 
 :root{
-  --paper:#F7F6F1;        /* page background — engineering paper */
+  --paper:#F7F6F1;        /* page background: engineering paper */
   --paper-deep:#EFEDE5;   /* recessed wells, video frames */
   --card:#FFFFFF;         /* cards and surfaces */
   --line:#E2DFD4;         /* hairlines on paper */
@@ -97,7 +97,7 @@ window.mediaFallback = function (img) {
   --accent-deep:#163A6B;  /* hover / pressed */
   --accent-soft:rgba(31,78,140,.08);   /* tinted fill */
   --accent-line:rgba(31,78,140,.22);   /* tinted border */
-  --pencil:#B3392F;       /* one signal color — hero margin only */
+  --pencil:#B3392F;       /* one signal color: hero margin only */
   --ok:#2E7D4F;           /* status dot (semantic) */
 
   --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Courier New', monospace;
@@ -114,7 +114,7 @@ window.mediaFallback = function (img) {
 
 html{
   scroll-behavior:smooth;
-  /* Keeps anchor targets clear of the fixed nav — the classic one-line fix. */
+  /* Keeps anchor targets clear of the fixed nav. The classic one-line fix. */
   scroll-padding-top:calc(var(--nav-h) + 22px);
   -webkit-text-size-adjust:100%;
 }
@@ -310,14 +310,14 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
 
 /* ==================================================================
    03. HERO
-   Signature motif: ruled paper + a pencil-red margin line, used only
-   here. Everything else stays clean.
+   Notebook cover page: a graph-paper masthead band, ruled lines,
+   a pencil-red margin line (used only here), and a VOL tag.
 ================================================================== */
-.hero{ padding:calc(var(--nav-h) + 76px) 0 76px; position:relative; }
+.hero{ padding:calc(var(--nav-h) + 46px) 0 76px; position:relative; }
 
 .hero::before{
   content:''; position:absolute; inset:0; pointer-events:none;
-  background-image:repeating-linear-gradient(0deg, transparent 0 27px, rgba(28,27,24,.045) 27px 28px);
+  background-image:repeating-linear-gradient(0deg, transparent 0 27px, rgba(28,27,24,.08) 27px 28px);
   -webkit-mask-image:linear-gradient(180deg, #000 30%, transparent 96%);
   mask-image:linear-gradient(180deg, #000 30%, transparent 96%);
 }
@@ -331,15 +331,49 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
   }
 }
 
-.hero__eyebrow{
-  font-family:var(--mono); font-size:.74rem; letter-spacing:.12em; text-transform:uppercase;
-  color:var(--accent); margin-bottom:18px;
+/* Masthead band: the notebook header, sitting on a faint graph grid */
+.hero__mast{
+  position:relative; z-index:1;
+  display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+  margin-bottom:30px;
+  padding:10px 14px;
+  border-top:1px solid var(--line-strong);
+  border-bottom:1px solid var(--line-strong);
+  background-image:
+    linear-gradient(rgba(31,78,140,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(31,78,140,.05) 1px, transparent 1px);
+  background-size:14px 14px;
 }
+.hero__mast-title{
+  font-family:var(--mono); font-size:.7rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--accent);
+}
+.hero__mast-note{
+  font-family:var(--mono); font-size:.66rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--muted);
+}
+
 .hero h1{
   font-size:clamp(2.6rem, 7vw, 4.3rem);
   line-height:1.04;
   color:var(--ink);
-  margin-bottom:18px;
+  margin-bottom:14px;
+}
+.hero__vol{
+  display:inline-block;
+  font-family:var(--mono); font-size:.7rem; font-weight:600; letter-spacing:.14em;
+  color:var(--accent);
+  border:1px solid var(--accent-line); border-radius:var(--r-sm);
+  background:var(--card);
+  padding:5px 10px;
+  margin-left:14px;
+  vertical-align:middle;
+  white-space:nowrap;
+}
+.hero__spec{
+  font-family:var(--mono); font-size:.8rem; letter-spacing:.02em;
+  color:var(--muted);
+  margin-bottom:16px;
 }
 .hero__role{
   max-width:58ch; color:var(--body); font-size:clamp(1.02rem, 2.1vw, 1.18rem);
@@ -371,6 +405,7 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
 
 /* ==================================================================
    04. SECTION SHELL
+   Every section header reads as a numbered notebook entry.
 ================================================================== */
 .section{ padding:88px 0; position:relative; }
 .section + .section{ border-top:1px solid var(--line); }
@@ -386,7 +421,8 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
 /* ==================================================================
    05. PROJECTS
    Cards read as notebook figures: white sheet, hairline border,
-   mono captions, schematic images kept uncropped.
+   corner tick marks, a FIG. tag, a SPEC annotation, mono captions.
+   Schematic images are kept uncropped.
 ================================================================== */
 .filters{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:14px; }
 .filter{
@@ -411,6 +447,7 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
 @media (max-width:960px){ .projects{ grid-template-columns:1fr; } }
 
 .card{
+  position:relative;
   display:flex; flex-direction:column; gap:15px;
   padding:24px;
   background:var(--card);
@@ -421,7 +458,29 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
 }
 .card:hover{ transform:translateY(-3px); border-color:var(--line-strong); box-shadow:var(--shadow); }
 
-.card__top{ display:flex; align-items:flex-start; justify-content:space-between; gap:14px; flex-wrap:wrap; }
+/* Blueprint corner tick marks: two short segments per corner */
+.card::before{
+  content:''; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+  background:
+    linear-gradient(var(--accent-line), var(--accent-line)) 0 0 / 18px 2px,
+    linear-gradient(var(--accent-line), var(--accent-line)) 0 0 / 2px 18px,
+    linear-gradient(var(--accent-line), var(--accent-line)) 100% 0 / 18px 2px,
+    linear-gradient(var(--accent-line), var(--accent-line)) 100% 0 / 2px 18px,
+    linear-gradient(var(--accent-line), var(--accent-line)) 0 100% / 18px 2px,
+    linear-gradient(var(--accent-line), var(--accent-line)) 0 100% / 2px 18px,
+    linear-gradient(var(--accent-line), var(--accent-line)) 100% 100% / 18px 2px,
+    linear-gradient(var(--accent-line), var(--accent-line)) 100% 100% / 2px 18px;
+  background-repeat:no-repeat;
+}
+
+.card__top{ display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; }
+.card__fig{
+  font-family:var(--mono); font-size:.66rem; font-weight:600; letter-spacing:.12em;
+  color:var(--accent);
+  background:var(--accent-soft);
+  border:1px solid var(--accent-line); border-radius:var(--r-sm);
+  padding:3px 9px; white-space:nowrap; flex:none;
+}
 .card__title{ font-size:1.15rem; letter-spacing:-.01em; }
 .card__date{
   font-family:var(--mono); font-size:.7rem; color:var(--muted);
@@ -438,6 +497,14 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
   border-radius:var(--r-sm); padding:3px 9px;
 }
 
+.card__spec{ display:flex; gap:12px; align-items:flex-start; }
+.card__spec-tag{
+  flex:none;
+  font-family:var(--mono); font-size:.6rem; font-weight:600; letter-spacing:.14em;
+  color:var(--accent);
+  border:1px solid var(--accent-line); border-radius:var(--r-sm);
+  padding:2px 7px; margin-top:3px;
+}
 .desc{ font-size:.94rem; color:var(--body); line-height:1.68; }
 
 /* ---------- In-card photo carousel ---------- */
@@ -539,8 +606,15 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
 .link:hover{ border-color:var(--accent); background:var(--accent-soft); }
 
 /* ==================================================================
-   06. TIMELINE
+   06. TIMELINE + MARGINALIA
+   A two-column spread on desktop: the timeline on the left, real
+   field notes in the margin on the right.
 ================================================================== */
+.exp-grid{
+  display:grid; grid-template-columns:1fr 250px; gap:34px; align-items:start;
+}
+@media (max-width:900px){ .exp-grid{ grid-template-columns:1fr; } }
+
 .timeline{ position:relative; padding-left:34px; }
 .timeline::before{
   content:''; position:absolute; left:10px; top:14px; bottom:14px; width:2px;
@@ -583,6 +657,23 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
   width:5px; height:5px; background:var(--accent); opacity:.75;
 }
 
+.marginalia{
+  font-family:var(--mono); font-size:.74rem; line-height:1.7; color:var(--muted);
+  background:var(--card);
+  border:1px solid var(--line); border-radius:var(--r);
+  padding:18px 20px;
+  box-shadow:0 8px 22px rgba(28,27,24,.045);
+}
+.marginalia__label{
+  font-size:.62rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:10px;
+}
+.marginalia__list{ list-style:none; display:flex; flex-direction:column; gap:8px; }
+.marginalia__list li{ position:relative; padding-left:16px; }
+.marginalia__list li::before{
+  content:''; position:absolute; left:0; top:.55em; width:6px; height:1px; background:var(--accent); opacity:.7;
+}
+
 @media (max-width:600px){
   .timeline{ padding-left:26px; }
   .tl-item{ padding:20px 18px; gap:14px; }
@@ -621,12 +712,26 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
 
 /* ==================================================================
    08. CONTACT / FOOTER
+   The last page of the notebook: a faint blueprint grid bleeds in
+   from the top, then the page-number strip closes the volume.
 ================================================================== */
 .contact{
+  position:relative; overflow:hidden;
   padding:96px 0 48px;
   border-top:1px solid var(--line);
   text-align:center;
 }
+.contact::before{
+  content:''; position:absolute; top:0; left:0; right:0; height:150px; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(31,78,140,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(31,78,140,.05) 1px, transparent 1px);
+  background-size:16px 16px;
+  -webkit-mask-image:linear-gradient(180deg, #000 15%, transparent);
+  mask-image:linear-gradient(180deg, #000 15%, transparent);
+}
+.contact .sec-label{ text-align:center; margin-bottom:26px; }
+
 /* Source photo is 858x1024 portrait; a square crop from the top frames the
    face at ~35% height, which reads naturally in a circle. Any lower clips it. */
 .contact__avatar{
@@ -653,9 +758,16 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
 .contact__mail:hover{ transform:translateY(-2px); background:var(--accent-soft); border-color:var(--accent); }
 .contact__mail svg{ flex:none; }
 .contact__links{ display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin:26px 0 44px; }
+
+.foot-pages{
+  display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+  font-family:var(--mono); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted);
+  padding-top:24px; border-top:1px solid var(--line);
+}
 .foot-note{
   font-family:var(--mono); font-size:.72rem; color:var(--muted);
-  padding-top:26px; border-top:1px solid var(--line);
+  padding-top:18px;
 }
 
 /* ==================================================================
@@ -739,7 +851,7 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
 <!-- ================= NAVIGATION ================= -->
 <header class="nav" id="nav">
   <div class="nav__inner">
-    <a class="brand" href="#top" aria-label="Behlool Moiz — home">
+    <a class="brand" href="#top" aria-label="Behlool Moiz, home">
       <span class="brand__mark" aria-hidden="true"></span> Behlool Moiz
     </a>
 
@@ -782,11 +894,16 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
 <!-- ================= HERO / ABOUT ================= -->
 <section class="hero" id="about" data-nav-section>
   <div class="wrap">
-    <p class="hero__eyebrow reveal">Electrical Engineering · University of Houston</p>
-    <h1 class="reveal">Behlool Moiz</h1>
+    <div class="hero__mast reveal">
+      <span class="hero__mast-title">Engineer's Notebook</span>
+      <span class="hero__mast-note">Houston, TX</span>
+    </div>
+    <h1 class="reveal">Behlool Moiz <span class="hero__vol">Vol. 01</span></h1>
+    <p class="hero__spec reveal">Electrical Engineering · University of Houston · PCBs, embedded firmware, computer vision</p>
     <p class="hero__role reveal">
-      Rising junior in electrical engineering at UH, building PCBs, embedded firmware, and
-      computer-vision tools — from schematic to shipped prototype.
+      Rising junior in electrical engineering at UH. I design PCBs, write firmware for ESP32s,
+      and train computer vision models. Most projects here start as a schematic and end as
+      something you can hold.
     </p>
     <div class="hero__cta reveal">
       <a class="btn btn--solid" href="#projects">View projects</a>
@@ -814,11 +931,11 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
 <section class="section" id="projects" data-nav-section>
   <div class="wrap">
     <div class="sec-head reveal">
-      <p class="sec-label">7 builds · 2025–2026</p>
+      <p class="sec-label">Entry 01 · 7 builds · 2025–2026</p>
       <h2 class="sec-title">Projects</h2>
       <p class="sec-sub">
-        Hardware, firmware and software I've designed and built — boards, enclosures,
-        embedded code and everything in between.
+        Seven projects, from boards and firmware to enclosures and dashboards.
+        Each one started as a schematic or a sketch.
       </p>
     </div>
 
@@ -835,9 +952,10 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
       <!-- ---------- 1. AI Parking Space Detection ---------- -->
       <article class="card reveal" data-category="software">
         <div class="card__top">
-          <h3 class="card__title">AI Parking Space Detection System</h3>
+          <span class="card__fig">FIG. 01</span>
           <span class="card__date">Feb – Mar 2026</span>
         </div>
+        <h3 class="card__title">AI Parking Space Detection System</h3>
 
         <div class="stack">
           <span class="chip">Python</span>
@@ -847,13 +965,15 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
           <span class="chip">Web Dashboard</span>
         </div>
 
-        <p class="desc">
-          OpenPark is a hackathon project built to eliminate parking headaches by detecting available
-          spots in real time using aerial camera footage. It runs a YOLOv8 computer vision model trained
-          on over 10,000 images to identify empty versus occupied spots with high accuracy. The data feeds
-          into a live web dashboard that displays parking lot layouts, highlighting open spots in green
-          and taken ones in red so drivers can quickly find a place to park.
-        </p>
+        <div class="card__spec">
+          <span class="card__spec-tag">SPEC</span>
+          <p class="desc">
+            OpenPark is my hackathon project. It watches aerial camera footage of a parking lot
+            and flags which spots are free. I trained a YOLOv8 model on 10,000+ images to tell
+            empty spots from occupied ones. Results feed a live web dashboard: green for open,
+            red for taken.
+          </p>
+        </div>
 
         <!-- Click-to-load YouTube: the iframe is only injected after a click -->
         <div class="video" data-video="RmpyhGK8YfM">
@@ -877,9 +997,10 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
       <!-- ---------- 2. Micromouse ---------- -->
       <article class="card reveal" data-category="hardware software">
         <div class="card__top">
-          <h3 class="card__title">Micromouse Autonomous Robot</h3>
+          <span class="card__fig">FIG. 02</span>
           <span class="card__date">Oct 2025 – Present</span>
         </div>
+        <h3 class="card__title">Micromouse Autonomous Robot</h3>
 
         <div class="stack">
           <span class="chip">EasyEDA</span>
@@ -890,12 +1011,15 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
           <span class="chip">Flood-Fill</span>
         </div>
 
-        <p class="desc">
-          Micromouse is an autonomous maze-solving robot that uses IR sensors to detect any walls ahead
-          of it. The goal is to blindly finish a maze as quickly as possible with the best algorithm.
-          Very old IEEE tradition. The way I designed this was to make my main body a PCB, which I
-          designed in EasyEDA. It's a team project with my close friends here at UH.
-        </p>
+        <div class="card__spec">
+          <span class="card__spec-tag">SPEC</span>
+          <p class="desc">
+            Micromouse is an autonomous maze-solving robot. IR sensors detect walls ahead, and a
+            flood-fill algorithm plans the fastest route through the maze. The whole body is a
+            custom PCB I laid out in EasyEDA, so the board is the chassis. It's a classic IEEE
+            tradition, and I'm building it with friends at UH.
+          </p>
+        </div>
 
         <div class="gallery" data-gallery>
           <div class="gallery__frame">
@@ -904,10 +1028,10 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
                  loading="lazy" decoding="async" data-cap="Assembled Robot"
                  data-label="ASSEMBLED ROBOT" data-path="assets/micromouse_main.webp" onerror="mediaFallback(this)">
             <img class="gallery__img" src="assets/micromouse_pcb2.webp" alt="Micromouse PCB render, component side"
-                 loading="lazy" decoding="async" data-cap="PCB — Component Layout"
+                 loading="lazy" decoding="async" data-cap="PCB · Component Layout"
                  data-label="PCB LAYOUT" data-path="assets/micromouse_pcb2.webp" onerror="mediaFallback(this)">
             <img class="gallery__img" src="assets/micromouse_pcb1.webp" alt="Micromouse PCB render with custom silkscreen artwork"
-                 loading="lazy" decoding="async" data-cap="PCB — Silkscreen Artwork"
+                 loading="lazy" decoding="async" data-cap="PCB · Silkscreen Artwork"
                  data-label="PCB ARTWORK" data-path="assets/micromouse_pcb1.webp" onerror="mediaFallback(this)">
             <img class="gallery__img" src="assets/micromouse_schematic.jpg" alt="Micromouse schematic drawn in EasyEDA"
                  loading="lazy" decoding="async" data-cap="EasyEDA Schematic"
@@ -929,9 +1053,10 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
       <!-- ---------- 3. Solar Greenhouse Recorder ---------- -->
       <article class="card reveal" data-category="hardware systems">
         <div class="card__top">
-          <h3 class="card__title">Solar Greenhouse Recorder</h3>
+          <span class="card__fig">FIG. 03</span>
           <span class="card__date">Aug – Nov 2025</span>
         </div>
+        <h3 class="card__title">Solar Greenhouse Recorder</h3>
 
         <div class="stack">
           <span class="chip">ESP32-CAM</span>
@@ -941,10 +1066,13 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
           <span class="chip">Timelapse</span>
         </div>
 
-        <p class="desc">
-          A greenhouse powered by a 5V solar panel that uses an ESP32 to capture images every 60 seconds
-          to make a timelapse of a seed sprouting.
-        </p>
+        <div class="card__spec">
+          <span class="card__spec-tag">SPEC</span>
+          <p class="desc">
+            A 3D-printed greenhouse powered by a 5V solar panel. An ESP32-CAM captures a photo
+            every 60 seconds, and the frames stitch into a timelapse of a seed sprouting.
+          </p>
+        </div>
 
         <div class="gallery" data-gallery>
           <div class="gallery__frame">
@@ -975,9 +1103,10 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
       <!-- ---------- 4. Mini F1 Car ---------- -->
       <article class="card reveal" data-category="hardware systems">
         <div class="card__top">
-          <h3 class="card__title">Mini F1 Car</h3>
+          <span class="card__fig">FIG. 04</span>
           <span class="card__date">Apr 2025</span>
         </div>
+        <h3 class="card__title">Mini F1 Car</h3>
 
         <div class="stack">
           <span class="chip">KiCad</span>
@@ -987,10 +1116,13 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
           <span class="chip">SHPE</span>
         </div>
 
-        <p class="desc">
-          A mini F1 car powered by an ESP32 module. Its chassis and wheels are made by 3D printing,
-          while the PCB is designed in KiCad.
-        </p>
+        <div class="card__spec">
+          <span class="card__spec-tag">SPEC</span>
+          <p class="desc">
+            A mini F1 car with an ESP32 brain. The chassis and wheels are 3D-printed, and the
+            control board is a PCB I designed in KiCad.
+          </p>
+        </div>
 
         <div class="gallery" data-gallery>
           <div class="gallery__frame">
@@ -1014,9 +1146,10 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
       <!-- ---------- 5. DIY Lithium-Ion Power Bank ---------- -->
       <article class="card reveal" data-category="hardware systems">
         <div class="card__top">
-          <h3 class="card__title">DIY Lithium-Ion Power Bank</h3>
+          <span class="card__fig">FIG. 05</span>
           <span class="card__date">Apr 2025</span>
         </div>
+        <h3 class="card__title">DIY Lithium-Ion Power Bank</h3>
 
         <div class="stack">
           <span class="chip">Li-ion Cells</span>
@@ -1026,12 +1159,14 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
           <span class="chip">3D Printing</span>
         </div>
 
-        <p class="desc">
-          I found a few dead vapes on campus and broke them apart to extract their single-cell lithium
-          batteries, wiring three in parallel for more capacity. To charge my phone, I wired the pack to
-          a $2 134N3P Micro USB board, which handles both battery management and boosting the output
-          from 3.7V to 5V.
-        </p>
+        <div class="card__spec">
+          <span class="card__spec-tag">SPEC</span>
+          <p class="desc">
+            I found a few dead vapes on campus and cracked them open for their lithium cells, then
+            wired three in parallel for more capacity. A $2 134N3P Micro USB board handles battery
+            management and boosts 3.7V to 5V to charge my phone.
+          </p>
+        </div>
 
         <div class="gallery" data-gallery>
           <div class="gallery__frame">
@@ -1058,9 +1193,10 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
       <!-- ---------- 6. ESP32-CAM CCTV Workshop ---------- -->
       <article class="card reveal" data-category="hardware software systems">
         <div class="card__top">
-          <h3 class="card__title">ESP32-CAM CCTV Workshop</h3>
+          <span class="card__fig">FIG. 06</span>
           <span class="card__date">Apr 2026</span>
         </div>
+        <h3 class="card__title">ESP32-CAM CCTV Workshop</h3>
 
         <div class="stack">
           <span class="chip">ESP32-CAM</span>
@@ -1071,13 +1207,15 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
           <span class="chip">Teaching</span>
         </div>
 
-        <p class="desc">
-          When I was a Project Chair for IEEE@UH, I hosted a beginner workshop on building a cheap,
-          web-controlled CCTV camera using an ESP32-CAM and a pair of servos for pan/tilt control. It's
-          a fun intro to hardware and IoT that covers wiring, 3D printing custom mounts, and controlling
-          a live stream over Wi-Fi. I put together a GitHub repo with the Arduino code, STL files, and
-          step-by-step tutorial slides so anyone can follow along and build one.
-        </p>
+        <div class="card__spec">
+          <span class="card__spec-tag">SPEC</span>
+          <p class="desc">
+            As Project Chair for IEEE@UH, I ran a beginner workshop on building a cheap
+            web-controlled CCTV camera. It uses an ESP32-CAM and two servos for pan and tilt. The
+            repo has the Arduino code, STL files for the mounts, and the tutorial slides, so
+            anyone can follow along and build one.
+          </p>
+        </div>
 
         <div class="gallery" data-gallery>
           <div class="gallery__frame">
@@ -1108,9 +1246,10 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
       <!-- ---------- 7. Multi-Range Digital Ohmmeter ---------- -->
       <article class="card reveal" data-category="hardware software">
         <div class="card__top">
-          <h3 class="card__title">Multi-Range Digital Ohmmeter</h3>
+          <span class="card__fig">FIG. 07</span>
           <span class="card__date">Apr 2026</span>
         </div>
+        <h3 class="card__title">Multi-Range Digital Ohmmeter</h3>
 
         <div class="stack">
           <span class="chip">Arduino</span>
@@ -1120,11 +1259,14 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
           <span class="chip">C++</span>
         </div>
 
-        <p class="desc">
-          I built a multi-range ohmmeter that uses multiplexers to switch between reference resistors
-          using pushbutton inputs. Controlled by an Arduino, you can manually choose the reference
-          resistance range and view real-time measurements on an LCD display.
-        </p>
+        <div class="card__spec">
+          <span class="card__spec-tag">SPEC</span>
+          <p class="desc">
+            I built a multi-range ohmmeter around an Arduino. A CD4051 multiplexer switches
+            between reference resistors, and pushbuttons pick the range by hand. Readings land on
+            a TFT display.
+          </p>
+        </div>
 
         <div class="gallery" data-gallery>
           <div class="gallery__frame">
@@ -1153,89 +1295,102 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
 <section class="section" id="experience" data-nav-section>
   <div class="wrap">
     <div class="sec-head reveal">
+      <p class="sec-label">Entry 02 · 4 roles · 2025–2026</p>
       <h2 class="sec-title">Experience &amp; Leadership</h2>
       <p class="sec-sub">Research, teaching, and running hands-on electronics workshops at UH.</p>
     </div>
 
-    <div class="timeline stagger">
+    <div class="exp-grid">
+      <div class="timeline stagger">
 
-      <article class="tl-item reveal">
-        <div class="tl-logo">
-          <img src="assets/reaseachUHLAB_logo.png" alt="Bioelectronic Synergy Lab logo" loading="lazy" decoding="async"
-               data-mono="LAB" data-path="assets/reaseachUHLAB_logo.png" onerror="mediaFallback(this)">
-        </div>
-        <div class="tl-body">
-          <div class="tl-head">
-            <h3 class="tl-role">Bioelectronics Research Assistant</h3>
-            <span class="tl-date">May 2026 – Present</span>
+        <article class="tl-item reveal">
+          <div class="tl-logo">
+            <img src="assets/reaseachUHLAB_logo.png" alt="Bioelectronic Synergy Lab logo" loading="lazy" decoding="async"
+                 data-mono="LAB" data-path="assets/reaseachUHLAB_logo.png" onerror="mediaFallback(this)">
           </div>
-          <p class="tl-org">Bioelectronic Synergy Lab, University of Houston</p>
-          <ul class="bullets">
-            <li>Conduct literature reviews and COMSOL simulations on cell migration methods, analyzing how localized electric fields can be used to safely direct cells towards target zones.</li>
-            <li>Design custom PCBs and prototype device components using soft plastics like PDMS, GelMA hydrogels and conductive polymers (PEDOT:PSS).</li>
-            <li>Collaborate in weekly lab meetings with the research team to present project updates and integrate electrical hardware with biological systems.</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="tl-item reveal">
-        <div class="tl-logo">
-          <img src="assets/ECEUH_logo.jpg" alt="University of Houston ECE logo" loading="lazy" decoding="async"
-               data-mono="ECE" data-path="assets/ECEUH_logo.jpg" onerror="mediaFallback(this)">
-        </div>
-        <div class="tl-body">
-          <div class="tl-head">
-            <h3 class="tl-role">Circuit Analysis II Teaching Assistant</h3>
-            <span class="tl-date">Jun 2026 – Present</span>
+          <div class="tl-body">
+            <div class="tl-head">
+              <h3 class="tl-role">Bioelectronics Research Assistant</h3>
+              <span class="tl-date">May 2026 – Present</span>
+            </div>
+            <p class="tl-org">Bioelectronic Synergy Lab, University of Houston</p>
+            <ul class="bullets">
+              <li>Run literature reviews and COMSOL simulations on cell migration, studying how localized electric fields can steer cells toward target zones.</li>
+              <li>Design custom PCBs and prototype device parts from soft materials: PDMS, GelMA hydrogels, and PEDOT:PSS conductive polymers.</li>
+              <li>Present updates and integrate electrical hardware with biological systems in weekly lab meetings.</li>
+            </ul>
           </div>
-          <p class="tl-org">Cullen College of Engineering, University of Houston</p>
-          <ul class="bullets">
-            <li>Reduced grading time by 60% by developing a Python script that automated submission grading and custom feedback via an AI model API.</li>
-            <li>Designed original homeworks and quizzes and conducted weekly office hours to troubleshoot complex AC network analysis, transfer functions, and transient responses.</li>
-            <li>Increased section performance from a 60% historical average to a high 70% average as a direct result of weekly review sessions, effective grading, and feedback.</li>
-          </ul>
-        </div>
-      </article>
+        </article>
 
-      <article class="tl-item reveal">
-        <div class="tl-logo">
-          <img src="assets/FirstYearUH_logo.jpg" alt="UH Cullen College First Year Experience logo" loading="lazy" decoding="async"
-               data-mono="FYE" data-path="assets/FirstYearUH_logo.jpg" onerror="mediaFallback(this)">
-        </div>
-        <div class="tl-body">
-          <div class="tl-head">
-            <h3 class="tl-role">Intro to Engineering Teaching Assistant</h3>
-            <span class="tl-date">Aug 2026 – Present</span>
+        <article class="tl-item reveal">
+          <div class="tl-logo">
+            <img src="assets/ECEUH_logo.jpg" alt="University of Houston ECE logo" loading="lazy" decoding="async"
+                 data-mono="ECE" data-path="assets/ECEUH_logo.jpg" onerror="mediaFallback(this)">
           </div>
-          <p class="tl-org">First Year Experience, Cullen College of Engineering</p>
-          <ul class="bullets">
-            <li>Guide first-year students through hands-on design labs covering breadboarding, basic measurement with multimeters, and the engineering design process.</li>
-            <li>Run weekly lab sections and office hours, walking students through MATLAB fundamentals and technical documentation standards.</li>
-            <li>Grade design reports and lab deliverables, giving written feedback focused on engineering reasoning rather than final answers.</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="tl-item reveal">
-        <div class="tl-logo">
-          <!-- Logo file not supplied; the monogram fallback renders "IEEE" intentionally. -->
-          <img src="assets/ieee_logo.png" alt="IEEE UH Student Branch logo" loading="lazy" decoding="async"
-               data-mono="IEEE" data-path="assets/ieee_logo.png" onerror="mediaFallback(this)">
-        </div>
-        <div class="tl-body">
-          <div class="tl-head">
-            <h3 class="tl-role">Project &amp; Workshop Chair</h3>
-            <span class="tl-date">Oct 2025 – May 2026</span>
+          <div class="tl-body">
+            <div class="tl-head">
+              <h3 class="tl-role">Circuit Analysis II Teaching Assistant</h3>
+              <span class="tl-date">Jun 2026 – Present</span>
+            </div>
+            <p class="tl-org">Cullen College of Engineering, University of Houston</p>
+            <ul class="bullets">
+              <li>Cut grading time by 60% with a Python script that grades submissions and writes custom feedback through an AI model API.</li>
+              <li>Write original homeworks and quizzes, and run weekly office hours on AC network analysis, transfer functions, and transient responses.</li>
+              <li>Section performance went from a 60% historical average to the high 70s after I added weekly review sessions.</li>
+            </ul>
           </div>
-          <p class="tl-org">IEEE @ UH Student Branch</p>
-          <ul class="bullets">
-            <li>Led and organized hands-on electronics workshops (breadboarding, soldering, PCB design using EasyEDA) with 30–40+ attendees per session.</li>
-            <li>Coordinated end-to-end workshop logistics, managing materials, schedules, and officer roles to support 15+ events per semester.</li>
-            <li>Represented the university at an IEEE regional conference, traveling to compete against other universities in technical student circuit design competitions.</li>
-          </ul>
-        </div>
-      </article>
+        </article>
 
+        <article class="tl-item reveal">
+          <div class="tl-logo">
+            <img src="assets/FirstYearUH_logo.jpg" alt="UH Cullen College First Year Experience logo" loading="lazy" decoding="async"
+                 data-mono="FYE" data-path="assets/FirstYearUH_logo.jpg" onerror="mediaFallback(this)">
+          </div>
+          <div class="tl-body">
+            <div class="tl-head">
+              <h3 class="tl-role">Intro to Engineering Teaching Assistant</h3>
+              <span class="tl-date">Aug 2026 – Present</span>
+            </div>
+            <p class="tl-org">First Year Experience, Cullen College of Engineering</p>
+            <ul class="bullets">
+              <li>Walk first-year students through design labs: breadboarding, multimeter measurement, and the engineering design process.</li>
+              <li>Run weekly lab sections and office hours on MATLAB fundamentals and technical documentation.</li>
+              <li>Grade design reports and give written feedback on engineering reasoning, not just final answers.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="tl-item reveal">
+          <div class="tl-logo">
+            <!-- Logo file not supplied; the monogram fallback renders "IEEE" intentionally. -->
+            <img src="assets/ieee_logo.png" alt="IEEE UH Student Branch logo" loading="lazy" decoding="async"
+                 data-mono="IEEE" data-path="assets/ieee_logo.png" onerror="mediaFallback(this)">
+          </div>
+          <div class="tl-body">
+            <div class="tl-head">
+              <h3 class="tl-role">Project &amp; Workshop Chair</h3>
+              <span class="tl-date">Oct 2025 – May 2026</span>
+            </div>
+            <p class="tl-org">IEEE @ UH Student Branch</p>
+            <ul class="bullets">
+              <li>Organized hands-on electronics workshops: breadboarding, soldering, and EasyEDA PCB design, with 30 to 40+ attendees per session.</li>
+              <li>Handled workshop logistics: materials, schedules, and officer roles, across 15+ events per semester.</li>
+              <li>Traveled to an IEEE regional conference to compete against other universities in circuit design competitions.</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+
+      <aside class="marginalia reveal" aria-label="Field notes on experience">
+        <p class="marginalia__label">Field Notes</p>
+        <ul class="marginalia__list">
+          <li>4 roles, 3 active now</li>
+          <li>30 to 40+ attendees per workshop</li>
+          <li>15+ events per semester</li>
+          <li>Grading script cut turnaround by 60%</li>
+        </ul>
+      </aside>
     </div>
   </div>
 </section>
@@ -1244,6 +1399,7 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
 <section class="section" id="skills" data-nav-section>
   <div class="wrap">
     <div class="sec-head reveal">
+      <p class="sec-label">Entry 03 · 6 categories · 42 tools</p>
       <h2 class="sec-title">Skills</h2>
       <p class="sec-sub">Bench tools, board design, firmware, and the software that ties it together.</p>
     </div>
@@ -1354,6 +1510,7 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
 <!-- ================= CONTACT / FOOTER ================= -->
 <footer class="contact" id="contact" data-nav-section>
   <div class="wrap">
+    <p class="sec-label reveal">Entry 04 · Contact</p>
     <img class="contact__avatar reveal" src="assets/PictureOfBehlool.webp"
          alt="Behlool Moiz" width="132" height="132" loading="lazy" decoding="async"
          data-label="PHOTO" data-path="assets/PictureOfBehlool.webp" onerror="mediaFallback(this)">
@@ -1385,6 +1542,10 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
       <a class="btn btn--ghost" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
     </div>
 
+    <div class="foot-pages reveal">
+      <span>End of Notebook</span>
+      <span>Vol. 01 · Page 04 / 04</span>
+    </div>
     <p class="foot-note">Designed and built by hand for Behlool Moiz · Houston, TX · Hosted on GitHub Pages · © <span id="year">2026</span></p>
   </div>
 </footer>
@@ -1410,7 +1571,7 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* --------------------------------------------------------------
-     1. Late-image sweep — catches anything that errored before the
+     1. Late-image sweep. Catches anything that errored before the
         inline onerror handler could be attached by the parser.
   -------------------------------------------------------------- */
   function sweepImages() {
