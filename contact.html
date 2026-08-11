@@ -41,14 +41,10 @@
     </div>
 
     <div class="contact__grid">
-      <!-- Ring image is optional: if assets/banana_frame.png is absent the photo
-           simply fills the box instead. Click swaps in the costume shot. -->
-      <button class="portrait no-frame" id="portrait" type="button"
+      <!-- Click flips to the costume shot; stays inert until that file exists. -->
+      <button class="portrait" id="portrait" type="button"
               data-alt="assets/banana_costume.jpg"
               aria-label="Photo of Behlool Moiz. Activate for a surprise.">
-        <img class="portrait__frame" src="assets/banana_frame.png" alt="" aria-hidden="true"
-             onload="this.closest('.portrait').classList.remove('no-frame')"
-             onerror="this.remove()">
         <img class="portrait__photo" id="portraitPhoto" src="assets/PictureOfBehlool.webp" alt="Behlool Moiz"
              loading="lazy" decoding="async"
              data-label="PHOTO" data-path="assets/PictureOfBehlool.webp" onerror="mediaFallback(this)">
