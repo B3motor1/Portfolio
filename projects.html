@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects — Behlool Moiz</title>
+<meta name="description" content="Hardware, firmware and software projects by Behlool Moiz: custom PCBs, autonomous robots, computer vision and 3D-printed prototypes.">
+<meta name="theme-color" content="#0A0A0A">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230A0A0A'/%3E%3Ctext x='50' y='68' font-size='52' font-family='monospace' font-weight='bold' fill='%23D9FF00' text-anchor='middle'%3EBM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="index.html">BM</a>
+    <button class="nav__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Open navigation menu">
+      <span class="nav__bars" aria-hidden="true"></span>
+    </button>
+    <ul class="nav__menu" id="navMenu">
+      <li><a class="nav__link" href="index.html">Home</a></li>
+      <li><a class="nav__link" href="projects.html" aria-current="page">Projects</a></li>
+      <li><a class="nav__link" href="experience.html">Experience</a></li>
+      <li><a class="nav__link" href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+<section class="section" style="padding-top:calc(var(--nav-h) + 76px)">
+  <div class="wrap">
+
+    <div class="sec-head">
+      <h2 class="sec-title">Projects</h2>
+      <div class="rule"></div>
+      <p class="sec-sub">
+        Hardware, firmware and software I&rsquo;ve designed and built — boards, enclosures,
+        embedded code and everything in between.
+      </p>
+    </div>
+
+    <div class="filters" role="group" aria-label="Filter projects by category">
+      <button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter" type="button" data-filter="hardware" aria-pressed="false">Hardware &amp; Circuits</button>
+      <button class="filter" type="button" data-filter="software" aria-pressed="false">Software &amp; AI</button>
+      <button class="filter" type="button" data-filter="systems" aria-pressed="false">Systems &amp; Prototyping</button>
+    </div>
+    <p class="filter-count" id="filterCount" role="status">Showing 7 of 7 projects</p>
+
+    <div class="projects stagger" id="projectGrid">
+
+      <!-- 1. AI Parking -->
+      <article class="card reveal" data-category="software">
+        <div class="card__top">
+          <h3 class="card__title">AI Parking Space Detection System</h3>
+          <span class="card__date">Feb — Mar 2026</span>
+        </div>
+        <div class="stack">
+          <span class="chip">Python</span><span class="chip">YOLOv8</span><span class="chip">OpenCV</span>
+          <span class="chip">Computer Vision</span><span class="chip">Web Dashboard</span>
+        </div>
+        <div>
+          <p class="desc-label">Project Description</p>
+          <p class="desc">
+            OpenPark is a hackathon project built to eliminate parking headaches by detecting available
+            spots in real time using aerial camera footage. It runs a YOLOv8 computer vision model trained
+            on over 10,000 images to identify empty versus occupied spots with high accuracy. The data feeds
+            into a live web dashboard that displays parking lot layouts, highlighting open spots in green
+            and taken ones in red so drivers can quickly find a place to park.
+          </p>
+        </div>
+        <div class="video" data-video="RmpyhGK8YfM">
+          <button class="video__play" type="button" aria-label="Play the OpenPark demo video">
+            <img src="https://i.ytimg.com/vi/RmpyhGK8YfM/hqdefault.jpg" alt="" loading="lazy" decoding="async"
+                 data-label="DEMO VIDEO" data-path="youtube.com/watch?v=RmpyhGK8YfM" onerror="mediaFallback(this)">
+            <span class="video__icon" aria-hidden="true">&#9654;</span>
+            <span class="video__label">Play Demo</span>
+          </button>
+        </div>
+        <div class="card__links">
+          <a class="link" href="https://www.youtube.com/watch?v=RmpyhGK8YfM" target="_blank" rel="noopener">Watch on YouTube</a>
+        </div>
+      </article>
+
+      <!-- 2. Micromouse -->
+      <article class="card reveal" data-category="hardware software">
+        <div class="card__top">
+          <h3 class="card__title">Micromouse Autonomous Robot</h3>
+          <span class="card__date">Oct 2025 — Present</span>
+        </div>
+        <div class="stack">
+          <span class="chip">EasyEDA</span><span class="chip">Custom PCB</span><span class="chip">ESP32</span>
+          <span class="chip">C++</span><span class="chip">IR Sensors</span><span class="chip">Flood-Fill</span>
+        </div>
+        <div>
+          <p class="desc-label">Project Description</p>
+          <p class="desc">
+            Micromouse is an autonomous maze-solving robot that uses IR sensors to detect any walls ahead
+            of it. The goal is to blindly finish a maze as quickly as possible with the best algorithm.
+            Very old IEEE tradition. The way I designed this was to make my main body a PCB, which I
+            designed in EasyEDA. It&rsquo;s a team project with my close friends here at UH.
+          </p>
+        </div>
+        <div class="gallery" data-gallery>
+          <div class="gallery__frame">
+            <button class="gal-nav gal-prev" type="button" aria-label="Previous image">&lsaquo;</button>
+            <img class="gallery__img" src="assets/micromouse_main.webp" alt="Assembled Micromouse robot with wheels and battery"
+                 loading="lazy" decoding="async" data-cap="Assembled Robot"
+                 data-label="ASSEMBLED ROBOT" data-path="assets/micromouse_main.webp" onerror="mediaFallback(this)">
+            <img class="gallery__img" src="assets/micromouse_pcb2.webp" alt="Micromouse PCB render, component side"
+                 loading="lazy" decoding="async" data-cap="PCB — Component Layout"
+                 data-label="PCB LAYOUT" data-path="assets/micromouse_pcb2.webp" onerror="mediaFallback(this)">
+            <img class="gallery__img" src="assets/micromouse_pcb1.webp" alt="Micromouse PCB render with custom silkscreen artwork"
+                 loading="lazy" decoding="async" data-cap="PCB — Silkscreen Artwork"
+                 data-label="PCB ARTWORK" data-path="assets/micromouse_pcb1.webp" onerror="mediaFallback(this)">
+            <img class="gallery__img" src="assets/micromouse_schematic.jpg" alt="Micromouse schematic drawn in EasyEDA"
+                 loading="lazy" decoding="async" data-cap="EasyEDA Schematic"
+                 data-label="SCHEMATIC" data-path="assets/micromouse_schematic.jpg" onerror="mediaFallback(this)">
+            <button class="gal-nav gal-next" type="button" aria-label="Next image">&rsaquo;</button>
+            <span class="gallery__count"></span>
+          </div>
+          <div class="gallery__bar"><span class="gallery__cap"></span><div class="gallery__dots"></div></div>
+        </div>
+        <div class="card__links">
+          <a class="link" href="https://github.com/B3motor1/Micromouse-Directional-stability-code/tree/main" target="_blank" rel="noopener">GitHub Repo</a>
+        </div>
+      </article>
+
+      <!-- 3. Solar Greenhouse -->
+      <article class="card reveal" data-category="hardware systems">
+        <div class="card__top">
+          <h3 class="card__title">Solar Greenhouse Recorder</h3>
+          <span class="card__date">Aug — Nov 2025</span>
+        </div>
+        <div class="stack">
+          <span class="chip">ESP32-CAM</span><span class="chip">Solar Power</span><span class="chip">3D Printing</span>
+          <span class="chip">Python</span><span class="chip">Timelapse</span>
+        </div>
+        <div>
+          <p class="desc-label">Project Description</p>
+          <p class="desc">
+            A greenhouse powered by a 5V solar panel that uses an ESP32 to capture images every 60 seconds
+            to make a timelapse of a seed sprouting.
+          </p>
+        </div>
+        <div class="gallery" data-gallery>
+          <div class="gallery__frame">
+            <button class="gal-nav gal-prev" type="button" aria-label="Previous image">&lsaquo;</button>
+            <img class="gallery__img" src="assets/solarhouse_main.webp" alt="Assembled solar greenhouse with panel on top and a seedling inside"
+                 loading="lazy" decoding="async" data-cap="Assembled Greenhouse"
+                 data-label="FINAL BUILD" data-path="assets/solarhouse_main.webp" onerror="mediaFallback(this)">
+            <img class="gallery__img" src="assets/solarhouse_CAD.webp" alt="Exploded CAD view of the 3D-printed greenhouse parts"
+                 loading="lazy" decoding="async" data-cap="Enclosure CAD"
+                 data-label="CAD MODEL" data-path="assets/solarhouse_CAD.webp" onerror="mediaFallback(this)">
+            <img class="gallery__img" src="assets/solarhouse_circuit.webp" alt="ESP32-CAM and wiring inside the printed electronics bay"
+                 loading="lazy" decoding="async" data-cap="ESP32-CAM Electronics Bay"
+                 data-label="ELECTRONICS" data-path="assets/solarhouse_circuit.webp" onerror="mediaFallback(this)">
+            <button class="gal-nav gal-next" type="button" aria-label="Next image">&rsaquo;</button>
+            <span class="gallery__count"></span>
+          </div>
+          <div class="gallery__bar"><span class="gallery__cap"></span><div class="gallery__dots"></div></div>
+        </div>
+        <div class="card__links">
+          <a class="link" href="https://github.com/B3motor1/Solar-Greenhouse-recorder" target="_blank" rel="noopener">GitHub Repo</a>
+        </div>
+      </article>
+
+      <!-- 4. Mini F1 -->
+      <article class="card reveal" data-category="hardware systems">
+        <div class="card__top">
+          <h3 class="card__title">Mini F1 Car</h3>
+          <span class="card__date">April 2025</span>
+        </div>
+        <div class="stack">
+          <span class="chip">KiCad</span><span class="chip">Custom PCB</span><span class="chip">ESP32</span>
+          <span class="chip">3D Printing</span><span class="chip">SHPE</span>
+        </div>
+        <div>
+          <p class="desc-label">Project Description</p>
+          <p class="desc">
+            A mini F1 car powered by an ESP32 module. Its chassis and wheels are made by 3D printing,
+            while the PCB is designed in KiCad.
+          </p>
+        </div>
+        <div class="gallery" data-gallery>
+          <div class="gallery__frame">
+            <button class="gal-nav gal-prev" type="button" aria-label="Previous image">&lsaquo;</button>
+            <img class="gallery__img" src="assets/minif1_main.webp" alt="The finished mini F1 car held next to the SHPE MiniF1 Project trophy"
+                 loading="lazy" decoding="async" data-cap="Finished Car &amp; SHPE Trophy"
+                 data-label="FINAL BUILD" data-path="assets/minif1_main.webp" onerror="mediaFallback(this)">
+            <img class="gallery__img" src="assets/minif1_schematic.webp" alt="KiCad schematic for the mini F1 car control board"
+                 loading="lazy" decoding="async" data-cap="KiCad Schematic"
+                 data-label="SCHEMATIC" data-path="assets/minif1_schematic.webp" onerror="mediaFallback(this)">
+            <button class="gal-nav gal-next" type="button" aria-label="Next image">&rsaquo;</button>
+            <span class="gallery__count"></span>
+          </div>
+          <div class="gallery__bar"><span class="gallery__cap"></span><div class="gallery__dots"></div></div>
+        </div>
+      </article>
+
+      <!-- 5. Power Bank -->
+      <article class="card reveal" data-category="hardware systems">
+        <div class="card__top">
+          <h3 class="card__title">DIY Lithium-Ion Power Bank</h3>
+          <span class="card__date">April 2025</span>
+        </div>
+        <div class="stack">
+          <span class="chip">Li-ion Cells</span><span class="chip">134N3P BMS</span><span class="chip">Boost Converter</span>
+          <span class="chip">Salvage</span><span class="chip">3D Printing</span>
+        </div>
+        <div>
+          <p class="desc-label">Project Description</p>
+          <p class="desc">
+            I found a few dead vapes on campus and broke them apart to extract their single-cell lithium
+            batteries, wiring three in parallel for more capacity. To charge my phone, I wired the pack to
+            a $2 134N3P Micro USB board, which handles both battery management and boosting the output
+            from 3.7V to 5V.
+          </p>
+        </div>
+        <div class="gallery" data-gallery>
+          <div class="gallery__frame">
+            <button class="gal-nav gal-prev" type="button" aria-label="Previous image">&lsaquo;</button>
+            <img class="gallery__img" src="assets/powerbank_main.webp" alt="Finished power bank: three lithium cells and a USB board in a printed case"
+                 loading="lazy" decoding="async" data-cap="Finished Power Bank"
+                 data-label="FINAL BUILD" data-path="assets/powerbank_main.webp" onerror="mediaFallback(this)">
+            <img class="gallery__img" src="assets/powerbank_picofvapes.webp" alt="Bag of discarded vapes collected on campus for cell salvage"
+                 loading="lazy" decoding="async" data-cap="Salvaged Vapes"
+                 data-label="SALVAGED CELLS" data-path="assets/powerbank_picofvapes.webp" onerror="mediaFallback(this)">
+            <img class="gallery__img" src="assets/powerbank_CAD.webp" alt="CAD model of the power bank enclosure in the slicer"
+                 loading="lazy" decoding="async" data-cap="Enclosure CAD"
+                 data-label="CAD MODEL" data-path="assets/powerbank_CAD.webp" onerror="mediaFallback(this)">
+            <button class="gal-nav gal-next" type="button" aria-label="Next image">&rsaquo;</button>
+            <span class="gallery__count"></span>
+          </div>
+          <div class="gallery__bar"><span class="gallery__cap"></span><div class="gallery__dots"></div></div>
+        </div>
+      </article>
+
+      <!-- 6. CCTV Workshop -->
+      <article class="card reveal" data-category="hardware software systems">
+        <div class="card__top">
+          <h3 class="card__title">ESP32-CAM CCTV Workshop</h3>
+          <span class="card__date">April 2026</span>
+        </div>
+        <div class="stack">
+          <span class="chip">ESP32-CAM</span><span class="chip">Arduino</span><span class="chip">Pan/Tilt Servos</span>
+          <span class="chip">Wi-Fi Streaming</span><span class="chip">3D Printing</span><span class="chip">Teaching</span>
+        </div>
+        <div>
+          <p class="desc-label">Project Description</p>
+          <p class="desc">
+            When I was a Project Chair for IEEE@UH, I hosted a beginner workshop on building a cheap,
+            web-controlled CCTV camera using an ESP32-CAM and a pair of servos for pan/tilt control. It&rsquo;s
+            a fun intro to hardware and IoT that covers wiring, 3D printing custom mounts, and controlling
+            a live stream over Wi-Fi. I put together a GitHub repo with the Arduino code, STL files, and
+            step-by-step tutorial slides so anyone can follow along and build one.
+          </p>
+        </div>
+        <div class="gallery" data-gallery>
+          <div class="gallery__frame">
+            <button class="gal-nav gal-prev" type="button" aria-label="Previous image">&lsaquo;</button>
+            <img class="gallery__img" src="assets/cctv_main.jpg" alt="Assembled ESP32-CAM on a 3D-printed pan and tilt mount fixed to a wall"
+                 loading="lazy" decoding="async" data-cap="Assembled Pan/Tilt Camera"
+                 data-label="FINAL BUILD" data-path="assets/cctv_main.jpg" onerror="mediaFallback(this)">
+            <img class="gallery__img" src="assets/cctv_schematic.webp" alt="Wiring diagram: ESP32-CAM to pan and tilt servos on GPIO 14 and 15"
+                 loading="lazy" decoding="async" data-cap="Wiring Diagram"
+                 data-label="WIRING DIAGRAM" data-path="assets/cctv_schematic.webp" onerror="mediaFallback(this)">
+            <img class="gallery__img" src="assets/cctv_circuit.webp" alt="Two SG90 servos wired to the 3D-printed pan and tilt bracket"
+                 loading="lazy" decoding="async" data-cap="Servos &amp; Printed Mount"
+                 data-label="SERVO MOUNT" data-path="assets/cctv_circuit.webp" onerror="mediaFallback(this)">
+            <button class="gal-nav gal-next" type="button" aria-label="Next image">&rsaquo;</button>
+            <span class="gallery__count"></span>
+          </div>
+          <div class="gallery__bar"><span class="gallery__cap"></span><div class="gallery__dots"></div></div>
+        </div>
+        <div class="card__links">
+          <a class="link" href="https://github.com/B3motor1/10-ESP32-CAM-Workshop" target="_blank" rel="noopener">GitHub Repo</a>
+        </div>
+      </article>
+
+      <!-- 7. Ohmmeter -->
+      <article class="card reveal" data-category="hardware software">
+        <div class="card__top">
+          <h3 class="card__title">Multi-Range Digital Ohmmeter</h3>
+          <span class="card__date">April 2026</span>
+        </div>
+        <div class="stack">
+          <span class="chip">Arduino</span><span class="chip">CD4051 Multiplexer</span><span class="chip">TFT Display</span>
+          <span class="chip">KiCad</span><span class="chip">C++</span>
+        </div>
+        <div>
+          <p class="desc-label">Project Description</p>
+          <p class="desc">
+            I built a multi-range ohmmeter that uses multiplexers to switch between reference resistors
+            using pushbutton inputs. Controlled by an Arduino, you can manually choose the reference
+            resistance range and view real-time measurements on an LCD display.
+          </p>
+        </div>
+        <div class="gallery" data-gallery>
+          <div class="gallery__frame">
+            <button class="gal-nav gal-prev" type="button" aria-label="Previous image">&lsaquo;</button>
+            <img class="gallery__img" src="assets/ohmmeter_main.webp" alt="Breadboard ohmmeter with Arduino Uno and TFT display showing a resistance reading"
+                 loading="lazy" decoding="async" data-cap="Breadboard Prototype"
+                 data-label="PROTOTYPE" data-path="assets/ohmmeter_main.webp" onerror="mediaFallback(this)">
+            <img class="gallery__img" src="assets/ohmmeter_schematic.webp" alt="KiCad schematic for the multi-range ohmmeter"
+                 loading="lazy" decoding="async" data-cap="KiCad Schematic"
+                 data-label="SCHEMATIC" data-path="assets/ohmmeter_schematic.webp" onerror="mediaFallback(this)">
+            <button class="gal-nav gal-next" type="button" aria-label="Next image">&rsaquo;</button>
+            <span class="gallery__count"></span>
+          </div>
+          <div class="gallery__bar"><span class="gallery__cap"></span><div class="gallery__dots"></div></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">&copy; <span id="year">2026</span> Behlool Moiz.</div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+  <div class="lightbox__backdrop" data-close></div>
+  <div class="lightbox__inner">
+    <button class="lb-btn lightbox__close" id="lbClose" type="button" data-close aria-label="Close viewer (Escape)">&#10005;</button>
+    <button class="lb-btn" id="lbPrev" type="button" aria-label="Previous image">&lsaquo;</button>
+    <img class="lightbox__img" id="lbImg" alt="">
+    <button class="lb-btn" id="lbNext" type="button" aria-label="Next image">&rsaquo;</button>
+    <p class="lightbox__cap" id="lbCap"></p>
+  </div>
+</div>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
