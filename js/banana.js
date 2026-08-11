@@ -115,6 +115,8 @@
   fill.position.set(-4, 3, 5);
   scene.add(fill);
 
+  if (THREE.sRGBEncoding) renderer.outputEncoding = THREE.sRGBEncoding;   /* correct glTF colours */
+
   function resize() {
     var w = host.clientWidth, h = host.clientHeight;
     if (!w || !h) return;
@@ -124,6 +126,35 @@
   }
   resize();
   window.addEventListener('resize', resize);
+
+  /* ---------------- real model ----------------
+     The procedural banana above renders immediately so there is never an
+     empty frame. If assets/banana.glb loads, it replaces it; if the file
+     or the loader is unavailable, the procedural one simply stays. */
+  if (typeof THREE.GLTFLoader === 'function') {
+    new THREE.GLTFLoader().load('assets/banana.glb', function (gltf) {
+      var obj = gltf.scene;
+
+      /* Centre and scale to match the framing, whatever units it shipped in. */
+      var box = new THREE.Box3().setFromObject(obj);
+      var size = box.getSize(new THREE.Vector3());
+      var mid = box.getCenter(new THREE.Vector3());
+      var maxDim = Math.max(size.x, size.y, size.z) || 1;
+
+      var holder = new THREE.Group();
+      obj.position.sub(mid);
+      holder.add(obj);
+      holder.scale.setScalar(4.0 / maxDim);
+      holder.rotation.z = -0.35;
+
+      pivot.remove(mesh);
+      mesh.geometry.dispose();
+      mesh.material.dispose();
+      pivot.add(holder);
+    }, undefined, function () {
+      /* keep the procedural banana */
+    });
+  }
 
   /* ---------------- interaction ---------------- */
   var targetX = 0, targetY = 0;     /* pointer-driven tilt   */

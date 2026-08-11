@@ -363,12 +363,13 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
   transition:border-color .2s ease;
 }
 .role:hover{ border-color:var(--line-hi); }
+/* Logos are keyed to transparent PNGs, so they sit straight on the card with
+   no tile behind them. */
 .role__logo{
-  flex:none; width:74px; height:74px;
-  background:#fff; border:1px solid var(--line);
+  flex:none; width:78px; height:78px;
   display:flex; align-items:center; justify-content:center; overflow:hidden;
 }
-.role__logo img{ width:100%; height:100%; object-fit:contain; padding:8px; }
+.role__logo img{ width:100%; height:100%; object-fit:contain; }
 .role__body{ flex:1 1 auto; min-width:0; }
 .role__head{ display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 16px; }
 .role__title{ font-size:1.22rem; }
