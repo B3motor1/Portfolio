@@ -25,12 +25,15 @@
 
   /* ---------------- geometry ---------------- */
   function bananaGeometry() {
-    var SEG = 150, RING = 32;
+    var SEG = 160, RING = 36;
     var pos = [], col = [], idx = [];
-    var BEND = Math.PI * 0.82;      /* how far the spine sweeps   */
-    var ARC  = 2.35;                /* spine radius               */
+    var BEND = Math.PI * 0.62;      /* sweep of the spine — gentler than a boomerang */
+    var ARC  = 2.15;                /* spine radius                                  */
+    var R    = 0.56;                /* max body radius                               */
+    /* Arc length ~4.2 against a ~1.1 diameter puts this near the 4:1 of a real
+       banana. The earlier 6.9:1 is what read as a boomerang. */
 
-    var bodyC = new THREE.Color(0xF2D22E);
+    var bodyC = new THREE.Color(0xF5CE22);
     var tipC  = new THREE.Color(0x4A3A16);
 
     for (var i = 0; i <= SEG; i++) {
@@ -43,19 +46,21 @@
       var nx = Math.sin(a + Math.PI / 2);
       var ny = Math.cos(a + Math.PI / 2);
 
-      /* fat middle, pointed ends, slightly skewed toward the stem */
-      var r = Math.sin(Math.PI * Math.pow(t, 0.66));
-      r = Math.pow(Math.max(r, 0), 0.52) * 0.44;
+      /* Stays near full thickness across the middle and only pinches close to
+         the ends, instead of tapering from the centre the whole way out. */
+      var s = Math.abs(2 * t - 1);
+      var r = R * Math.pow(Math.max(1 - Math.pow(s, 2.6), 0), 0.62);
+      r *= 1 + 0.10 * (0.5 - t);                   /* stem end slightly slimmer */
 
       /* darken the last few percent at each end */
       var tipMix = 0;
-      if (t < 0.055) tipMix = 1 - t / 0.055;
-      else if (t > 0.945) tipMix = (t - 0.945) / 0.055;
+      if (t < 0.05) tipMix = 1 - t / 0.05;
+      else if (t > 0.95) tipMix = (t - 0.95) / 0.05;
       var c = bodyC.clone().lerp(tipC, Math.min(tipMix, 1));
 
       for (var j = 0; j <= RING; j++) {
         var v = j / RING * Math.PI * 2;
-        var lobe = 1 + 0.16 * Math.cos(3 * v);     /* triangular-ish section */
+        var lobe = 1 + 0.075 * Math.cos(5 * v);    /* the soft pentagonal section */
         var rr = r * lobe;
         pos.push(
           cx + nx * Math.cos(v) * rr,
@@ -83,7 +88,7 @@
   /* ---------------- scene ---------------- */
   var scene = new THREE.Scene();
   var camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
-  camera.position.set(0, 0, 7.4);
+  camera.position.set(0, 0, 6.9);
 
   var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));

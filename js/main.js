@@ -383,6 +383,50 @@
     revealables.forEach(function (el) { io.observe(el); });
   }
 
+  /* ----------------------------------------------------------------
+     Portrait easter egg — click swaps in the banana-costume shot.
+     The swap only arms itself once the alternate image has actually
+     loaded, so a missing file leaves a plain, non-broken portrait.
+  ---------------------------------------------------------------- */
+  var portrait = $('#portrait');
+  if (portrait) {
+    var photo = $('#portraitPhoto');
+    var tip = $('#portraitTip');
+    var mainSrc = photo.getAttribute('src');
+    var altSrc = portrait.getAttribute('data-alt');
+    var mainAlt = photo.alt;
+    var armed = false, showingAlt = false, busy = false;
+
+    var probe = new Image();
+    probe.onload = function () {
+      armed = true;
+      if (tip) tip.textContent = 'Click me';
+    };
+    probe.onerror = function () {
+      /* Leave it inert rather than swapping to a broken image. */
+      portrait.setAttribute('aria-label', 'Photo of Behlool Moiz');
+      portrait.style.cursor = 'default';
+    };
+    probe.src = altSrc;
+
+    portrait.addEventListener('click', function () {
+      if (!armed || busy) return;
+      busy = true;
+      portrait.classList.add('is-flipping');
+      /* Swap at the halfway point so the change happens mid-turn. */
+      setTimeout(function () {
+        showingAlt = !showingAlt;
+        photo.src = showingAlt ? altSrc : mainSrc;
+        photo.alt = showingAlt ? 'Behlool Moiz in a banana costume' : mainAlt;
+        if (tip) tip.textContent = showingAlt ? 'Click to change back' : 'Click me';
+      }, 250);
+      setTimeout(function () {
+        portrait.classList.remove('is-flipping');
+        busy = false;
+      }, 560);
+    });
+  }
+
   /* Footer year */
   var y = $('#year');
   if (y) y.textContent = new Date().getFullYear();

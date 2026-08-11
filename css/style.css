@@ -402,26 +402,60 @@ html.locked body{ overflow:hidden; padding-right:var(--sbw); }
 /* ==================================================================
    CONTACT
 ================================================================== */
-.contact__grid{ display:grid; grid-template-columns:auto 1fr; gap:44px; align-items:center; }
-.avatar{
-  width:170px; height:170px; flex:none;
-  object-fit:cover; object-position:center top;
-  border:1px solid var(--line-hi);
+.contact__grid{ display:grid; grid-template-columns:auto 1fr; gap:48px; align-items:center; }
+
+/* Portrait sits inside the banana ring. The frame is the lower layer, so the
+   photo covers its centre whether that centre is white or transparent.
+   --inner is the photo's share of the box; nudge it if the ring's hole differs. */
+.portrait{
+  --inner:60%;
+  position:relative; width:236px; height:236px; flex:none;
+  padding:0; border:0; background:none; cursor:pointer;
+  display:block;
 }
-.mails{ display:flex; flex-direction:column; gap:14px; margin-top:34px; }
+.portrait__frame{
+  position:absolute; inset:0; z-index:0;
+  width:100%; height:100%; object-fit:contain; pointer-events:none;
+}
+.portrait__photo{
+  position:absolute; top:50%; left:50%; z-index:1;
+  width:var(--inner); height:var(--inner);
+  transform:translate(-50%,-50%);
+  border-radius:50%; object-fit:cover; object-position:center top;
+  transition:transform .55s cubic-bezier(.22,.9,.3,1);
+}
+.portrait:hover .portrait__photo{ transform:translate(-50%,-50%) scale(1.04); }
+.portrait.is-flipping .portrait__photo{ transform:translate(-50%,-50%) rotateY(360deg) scale(1.04); }
+/* No ring image yet (or it failed): the photo fills the box and gets a border. */
+.portrait.no-frame{ --inner:100%; }
+.portrait.no-frame .portrait__photo{ border:2px solid var(--line-hi); }
+.portrait__tip{
+  position:absolute; left:50%; bottom:-26px; transform:translateX(-50%); z-index:2;
+  font-family:var(--mono); font-size:.6rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--faint); white-space:nowrap; pointer-events:none;
+  opacity:0; transition:opacity .2s ease;
+}
+.portrait:hover .portrait__tip, .portrait:focus-visible .portrait__tip{ opacity:1; }
+
+.mails{ display:flex; flex-direction:column; align-items:flex-start; gap:10px; margin-top:26px; }
 .mail{
-  display:flex; align-items:center; gap:14px;
-  font-family:var(--mono); font-size:clamp(.84rem, 2.2vw, 1.06rem);
+  display:inline-flex; align-items:center; gap:13px;
+  font-family:var(--mono); font-size:.86rem;
   color:var(--text); text-decoration:none;
-  border:1px solid var(--line-hi); padding:18px 22px;
-  transition:.16s ease; word-break:break-word;
+  border:1px solid var(--line-hi); padding:11px 17px;
+  transition:.16s ease;
 }
 .mail:hover{ border-color:var(--accent); color:var(--accent); }
-.mail__k{ font-size:.64rem; letter-spacing:.18em; text-transform:uppercase; color:var(--faint); flex:none; }
-.contact__links{ display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
+.mail__k{ font-size:.58rem; letter-spacing:.16em; text-transform:uppercase; color:var(--faint); flex:none; }
+.contact__links{ display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+
 @media (max-width:760px){
-  .contact__grid{ grid-template-columns:1fr; gap:30px; }
-  .avatar{ width:130px; height:130px; }
+  .contact__grid{ grid-template-columns:1fr; gap:34px; justify-items:start; }
+  .portrait{ width:188px; height:188px; }
+  .mail{ font-size:.78rem; padding:10px 14px; gap:10px; }
+}
+@media (max-width:430px){
+  .mail{ font-size:.72rem; }
 }
 
 /* ==================================================================
