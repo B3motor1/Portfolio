@@ -131,7 +131,9 @@
      The procedural banana above renders immediately so there is never an
      empty frame. If assets/banana.glb loads, it replaces it; if the file
      or the loader is unavailable, the procedural one simply stays. */
-  if (typeof THREE.GLTFLoader === 'function') {
+  if (typeof THREE.GLTFLoader !== 'function') {
+    console.warn('[banana] GLTFLoader missing — keeping the procedural mesh.');
+  } else {
     new THREE.GLTFLoader().load('assets/banana.glb', function (gltf) {
       var obj = gltf.scene;
 
@@ -139,7 +141,14 @@
       var box = new THREE.Box3().setFromObject(obj);
       var size = box.getSize(new THREE.Vector3());
       var mid = box.getCenter(new THREE.Vector3());
-      var maxDim = Math.max(size.x, size.y, size.z) || 1;
+      var maxDim = Math.max(size.x, size.y, size.z);
+
+      /* An empty/degenerate box yields -Infinity here, which would scale the
+         model to nothing and look identical to a failed load. */
+      if (!isFinite(maxDim) || maxDim <= 0) {
+        console.warn('[banana] model has no measurable geometry — keeping the procedural mesh.');
+        return;
+      }
 
       var holder = new THREE.Group();
       obj.position.sub(mid);
@@ -151,8 +160,9 @@
       mesh.geometry.dispose();
       mesh.material.dispose();
       pivot.add(holder);
-    }, undefined, function () {
-      /* keep the procedural banana */
+      console.info('[banana] model loaded — source size ' + maxDim.toFixed(2) + ' units.');
+    }, undefined, function (err) {
+      console.error('[banana] failed to load assets/banana.glb — keeping the procedural mesh.', err);
     });
   }
 
